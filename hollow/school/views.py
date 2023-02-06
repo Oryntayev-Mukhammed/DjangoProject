@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 
 def index(request):
-    return HttpResponse("Страница магазина")
+    return HttpResponse("XXS")
 
 
 def categories(request, catid):
