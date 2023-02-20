@@ -3,9 +3,13 @@ from django.http import HttpResponse, HttpResponseNotFound, HttpResponseServerEr
 from django.http import Http404
 from django.shortcuts import render
 
+menu = ["Войти", "Регистрация"]
+
+def form(request):
+    return render(request, 'school/form.html')
 
 def index(request):
-    return HttpResponse("XXS")
+    return render(request, 'school/index.html', {'menu':menu, 'title':'Главная страница'})
 
 
 def categories(request, catid):
