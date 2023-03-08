@@ -1,2 +1,9 @@
-body {
-background-color: black;
+body
+{
+    backgroundColor: white;
+}
+
+h2
+{
+color: black;
+}

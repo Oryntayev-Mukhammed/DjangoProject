@@ -2,14 +2,22 @@ from django.http import HttpResponse, HttpResponseNotFound, HttpResponseServerEr
     HttpResponseForbidden
 from django.http import Http404
 from django.shortcuts import render
+from .models import *
 
 menu = ["Войти", "Регистрация"]
+
 
 def form(request):
     return render(request, 'school/form.html')
 
+
 def index(request):
-    return render(request, 'school/index.html', {'menu':menu, 'title':'Главная страница'})
+    return render(request, 'school/index.html', {'menu': menu, 'title': 'Главная страница'})
+
+
+def about(request):
+    posts = Terms.objects.all()
+    return render(request, 'school/about.html', {'posts': posts})
 
 
 def categories(request, catid):
@@ -28,6 +36,7 @@ def archive(request, year):
 def serverError(request):
     return HttpResponseServerError('<h1>Проблема с сервером</h1>')
 
+
 def badRequest(request, exception):
     return HttpResponseBadRequest('<h1>Ошибка данных</h1>')
 
@@ -38,5 +47,3 @@ def pageNotFound(request, exception):
 
 def forbiddenRequest(request, exception):
     return HttpResponseForbidden('<h1>Ошибка доступа</h1>')
-
-

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="{% static 'school/css/styles.css' %}" />
+    <title>О таблице</title>
+</head>
+<body>
+    <li>
+        {% for p in posts %}
+        <h2>{{p.TermName}}</h2>
+        {% endfor %}
+    </li>
+</body>
+</html>
