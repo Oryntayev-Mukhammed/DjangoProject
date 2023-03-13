@@ -38,7 +38,7 @@ class MarksAdmin(admin.ModelAdmin):
     list_display = ['id', 'SubjectId', 'PrsnId', 'Mark', 'MarkType']
     list_display_links = ['id', 'SubjectId']
     search_fields = ['SubjectId', 'PrsnId', 'MarkType']
-    list_filter = ['SubjectId', 'PrsnId', 'MarkType']
+    list_filter = ['SubjectId', 'MarkType']
 
 
 class StudentDataAdmin(admin.ModelAdmin):
@@ -51,7 +51,7 @@ class ClassAdmin(admin.ModelAdmin):
     list_display = ['id', 'ClassName', 'StdId', 'SubjectId']
     list_display_links = ['id', 'ClassName']
     search_fields = ['ClassName']
-    list_filter = ['StdId']
+    list_filter = ['SubjectId']
 
 
 admin.site.register(Terms, TermsAdmin)
