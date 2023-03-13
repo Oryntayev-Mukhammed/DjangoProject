@@ -16,8 +16,7 @@ def index(request):
 
 
 def about(request):
-    posts = Terms.objects.all()
-    return render(request, 'school/about.html', {'posts': posts})
+    return render(request, 'school/about.html')
 
 
 def categories(request, catid):

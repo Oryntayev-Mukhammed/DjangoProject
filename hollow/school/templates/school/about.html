@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load school_tags %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,8 +8,9 @@
     <title>О таблице</title>
 </head>
 <body>
+    {% get_terms as terms %}
     <li>
-        {% for p in posts %}
+        {% for p in terms %}
         <h2>{{p.TermName}}</h2>
         {% endfor %}
     </li>
