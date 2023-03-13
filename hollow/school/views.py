@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseServerError, HttpResponseBadRequest, \
     HttpResponseForbidden
 from django.http import Http404
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import *
 
 menu = ["Войти", "Регистрация"]
@@ -17,6 +17,15 @@ def index(request):
 
 def about(request):
     return render(request, 'school/about.html')
+
+
+def show_term(request, term_slug):
+    term = get_object_or_404(Terms, slug=term_slug)
+    context = {
+        'TermName' : term.TermName,
+    }
+
+    return render(request, 'school/term.html', context=context)
 
 
 def categories(request, catid):
