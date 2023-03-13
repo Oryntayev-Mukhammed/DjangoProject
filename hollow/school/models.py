@@ -2,6 +2,7 @@ from django.db import models
 
 
 class MarkType(models.Model):
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, null=True, verbose_name='URL')
     MarkType = models.CharField(max_length=255, verbose_name='Тип задания')
     TypeName = models.CharField(max_length=255, verbose_name='Название задания')
 
@@ -15,6 +16,7 @@ class MarkType(models.Model):
 
 
 class Terms(models.Model):
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, null=True, verbose_name='URL')
     TermName = models.CharField(max_length=255, verbose_name='Название семестра')
 
     def __str__(self):
@@ -27,6 +29,7 @@ class Terms(models.Model):
 
 
 class Subjects(models.Model):
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, null=True, verbose_name='URL')
     SubjectName = models.CharField(max_length=255, verbose_name='Название занятия')
     TermId = models.ForeignKey(Terms, on_delete=models.CASCADE, verbose_name='К какому семестру')
 
@@ -40,6 +43,7 @@ class Subjects(models.Model):
 
 
 class PersonType(models.Model):
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, null=True, verbose_name='URL')
     Prsntype = models.CharField(max_length=255, verbose_name='Тип')
 
     def __str__(self):
@@ -52,6 +56,7 @@ class PersonType(models.Model):
 
 
 class Person(models.Model):
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, null=True, verbose_name='URL')
     PrsnFristName = models.CharField(max_length=255, verbose_name='Имя')
     PrsnScndName = models.CharField(max_length=255, verbose_name='Фамилия')
     PrsnThrdName = models.CharField(max_length=255, verbose_name='Отчество')
@@ -68,6 +73,7 @@ class Person(models.Model):
 
 
 class Marks(models.Model):
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, null=True, verbose_name='URL')
     SubjectId = models.ForeignKey(Subjects, on_delete=models.CASCADE, verbose_name='Занятие')
     PrsnId = models.ForeignKey(Person, on_delete=models.CASCADE, verbose_name='Ученик')
     Mark = models.IntegerField(verbose_name='Оценка')
@@ -80,6 +86,7 @@ class Marks(models.Model):
 
 
 class StudentData(models.Model):
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, null=True, verbose_name='URL')
     StdName = models.CharField(max_length=255, verbose_name='Имя студента')
     StdDOB = models.DateField(verbose_name='День рождения')
     StdJoinDate = models.DateField(verbose_name='Дата зачисления')
@@ -96,6 +103,7 @@ class StudentData(models.Model):
 
 
 class Class(models.Model):
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, null=True, verbose_name='URL')
     ClassName = models.CharField(max_length=255, verbose_name='Название группы')
     StdId = models.ForeignKey(StudentData, on_delete=models.CASCADE, verbose_name='Студент')
     SubjectId = models.ForeignKey(Subjects, on_delete=models.CASCADE, verbose_name='Занятие')

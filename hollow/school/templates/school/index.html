@@ -1,10 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    {% load static %}
+    {% load school_tags %}
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+	<meta charset="UTF-8">
+	<title>Мой кабинет - Название онлайн-школы</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'school/css/index.css' %}">
+	<style>
+	</style>
 </head>
 <body>
-
+	<header>
+		School canv
+	</header>
+	<nav>
+		<a href="#">Главная</a>
+		<a href="#">Курсы</a>
+		<a href="#">Расписание</a>
+		<a href="#">Мой профиль</a>
+	</nav>
+	<section>
+		<h2>Люди</h2>
+		{% get_person as persons %}
+		{% for p in persons %}
+			<div class="course">
+				<h2>{{p.PrsnFristName}}</h2>
+				<h2>{{p.PrsnScndName}}</h2>
+				<h2>{{p.PrsnThrdName}}</h2>
+				<h2>{{p.PrsnDOB}}</h2>
+				<h2>{{p.PrsnType}}</h2>
+			</div>
+		{% endfor %}
+	</section>
+	<footer>
+		&copy; 2023 EVM HOL. Все права защищены.
+	</footer>
 </body>
 </html>

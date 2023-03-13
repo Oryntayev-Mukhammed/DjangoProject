@@ -6,6 +6,7 @@ class TermsAdmin(admin.ModelAdmin):
     list_display = ['id', 'TermName']
     list_display_links = ['id', 'TermName']
     search_fields = ['TermName']
+    prepopulated_fields = {"slug": ("TermName",)}
 
 
 class MarkTypeAdmin(admin.ModelAdmin):
@@ -13,6 +14,7 @@ class MarkTypeAdmin(admin.ModelAdmin):
     list_display_links = ['id', 'MarkType']
     search_fields = ['TypeName']
     list_filter = ['MarkType']
+    prepopulated_fields = {"slug": ("TypeName",)}
 
 
 class SubjectsAdmin(admin.ModelAdmin):
@@ -20,11 +22,13 @@ class SubjectsAdmin(admin.ModelAdmin):
     list_display_links = ['id', 'SubjectName']
     search_fields = ['SubjectName']
     list_filter = ['TermId']
+    prepopulated_fields = {"slug": ("SubjectName",)}
 
 
 class PersonTypeAdmin(admin.ModelAdmin):
     list_display = ['id', 'Prsntype']
     list_display_links = ['id', 'Prsntype']
+    prepopulated_fields = {"slug": ("Prsntype",)}
 
 
 class PersonAdmin(admin.ModelAdmin):
@@ -32,6 +36,7 @@ class PersonAdmin(admin.ModelAdmin):
     list_display_links = ['id', 'PrsnFristName']
     search_fields = ['PrsnFristName']
     list_filter = ['PrsnType']
+    prepopulated_fields = {"slug": ("PrsnFristName",)}
 
 
 class MarksAdmin(admin.ModelAdmin):
@@ -39,12 +44,14 @@ class MarksAdmin(admin.ModelAdmin):
     list_display_links = ['id', 'SubjectId']
     search_fields = ['SubjectId', 'PrsnId', 'MarkType']
     list_filter = ['SubjectId', 'MarkType']
+    prepopulated_fields = {"slug": ("Mark",)}
 
 
 class StudentDataAdmin(admin.ModelAdmin):
     list_display = ['id', 'StdName', 'StdDOB', 'StdJoinDate', 'PrsnId', 'StdAddress']
     list_display_links = ['id', 'StdName']
     search_fields = ['StdName']
+    prepopulated_fields = {"slug": ("StdName",)}
 
 
 class ClassAdmin(admin.ModelAdmin):
@@ -52,6 +59,7 @@ class ClassAdmin(admin.ModelAdmin):
     list_display_links = ['id', 'ClassName']
     search_fields = ['ClassName']
     list_filter = ['SubjectId']
+    prepopulated_fields = {"slug": ("ClassName",)}
 
 
 admin.site.register(Terms, TermsAdmin)
