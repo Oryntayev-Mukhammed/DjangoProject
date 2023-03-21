@@ -7,36 +7,593 @@
     {% bootstrap_css %}
     {% bootstrap_javascript %}
 	<meta charset="UTF-8">
-	<title>Мой кабинет - Название онлайн-школы</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'school/css/index.css' %}">
-	<style>
-	</style>
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Education</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'school/images/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'school/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'school/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'school/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'school/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'school/css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'school/css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'school/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'school/css/gijgo.css' %}">
+    <link rel="stylesheet" href="{% static 'school/css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'school/css/slicknav.css' %}">
+    <link rel="stylesheet" href="{% static 'school/css/style.css' %}">
 </head>
 <body>
-	<header>
-		School OSI
-	</header>
-	<nav>
-		<a href="#">Главная</a>
-		<a href="#">Курсы</a>
-		<a href="#">Расписание</a>
-		<a href="#">Мой профиль</a>
-	</nav>
-	<section>
-		<h2>Persons</h2>
-		{% get_person as persons %}
-		{% for p in persons %}
-			<div class="course">
-				<h2>{{p.PrsnFristName}}</h2>
-				<h2>{{p.PrsnScndName}}</h2>
-				<h2>{{p.PrsnThrdName}}</h2>
-				<h2>{{p.PrsnDOB}}</h2>
-				<h2>{{p.PrsnType}}</h2>
+    <header>
+        <div class="header-area ">
+            <div class="header-top_area">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="header_top_wrap d-flex justify-content-between align-items-center">
+                                <div class="text_wrap">
+                                    <p><a href="#"> <i class="ti-user"></i>  Login</a> <a href="#">Register</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="sticky-header" class="main-header-area">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="header_wrap d-flex justify-content-between align-items-center">
+                                <div class="header_left">
+                                    <div class="logo">
+                                        <a href="{% url 'home' %}">
+                                            <img src="{% static 'img/logo.png' %}" alt="">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="header_right d-flex align-items-center">
+                                    <div class="main-menu  d-none d-lg-block">
+                                        <nav>
+                                            <ul id="navigation">
+                                                <li><a href="#">home</a></li>
+                                                <li><a href="#">Courses</a></li>
+                                                <li><a href="#">blog <i class="ti-angle-down"></i></a>
+                                                    <ul class="submenu">
+                                                        <li><a href="#">blog</a></li>
+														<li><a href="#">single-blog</a></li>
+													</ul>
+												<li><a href="#">pages <i class="ti-angle-down"></i></a>
+												    <ul class="submenu">
+														<li><a href="#">Event</a></li>
+														<li><a href="#">Event Details</a></li>
+														<li><a href="#">Admissions</a></li>
+														<li><a href="#">Elements</a></li>
+													</ul>
+												</li>
+												<li><a href="#">Contact</a></li>
+											</ul>
+										</nav>
+									</div>
+									<div class="Appointment">
+										<div class="book_btn d-none d-lg-block">
+											<a data-scroll-nav='1' href="#">Apply Now</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-12">
+							<div class="mobile_menu d_block d-lg-none"></div>
+						</div>
+					</div>
+				</div>
 			</div>
-		{% endfor %}
-	</section>
-	<footer>
-		&copy; 2023 EVM HOL. Все права защищены.
-	</footer>
+		</div>
+	</header>
+    <div class="slider_area">
+    <div class="slider_active owl-carousel">
+        <div class="single_slider  d-flex align-items-center slider_bg_1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="slider_text ">
+                            <h3>Boost up your skills <br>
+                                with a new way of <br>
+                                learning.</h3>
+                            <a href="#" class="boxed-btn3">Get Start</a>
+                            <a href="#" class="boxed-btn4">Take a tour</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="single_slider  d-flex align-items-center slider_bg_2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="slider_text ">
+                            <h3>Boost up your skills <br>
+                                with a new way of <br>
+                                learning.</h3>
+                            <a href="#" class="boxed-btn3">Get Start</a>
+                            <a href="#" class="boxed-btn4">Take a tour</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="single_slider  d-flex align-items-center slider_bg_1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="slider_text ">
+                            <h3>Boost up your skills <br>
+                                with a new way of <br>
+                                learning.</h3>
+                            <a href="#" class="boxed-btn3">Get Start</a>
+                            <a href="#" class="boxed-btn4">Take a tour</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+    <div class="service_area gray_bg">
+        <div class="container">
+            <div class="row justify-content-center ">
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_service d-flex align-items-center ">
+                        <div class="icon">
+                            <i class="flaticon-school"></i>
+                        </div>
+                        <div class="service_info">
+                            <h4>Scholarship</h4>
+                            <p>Available</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_service d-flex align-items-center ">
+                        <div class="icon">
+                            <i class="flaticon-error"></i>
+                        </div>
+                        <div class="service_info">
+                            <h4>Scholarship</h4>
+                            <p>Available</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_service d-flex align-items-center ">
+                        <div class="icon">
+                            <i class="flaticon-book"></i>
+                        </div>
+                        <div class="service_info">
+                            <h4>Scholarship</h4>
+                            <p>Available</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popular_program_area section__padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section_title text-center">
+                        <h3>Popular Program</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single__program">
+                                <div class="program_thumb">
+                                    <img src="img/program/1.png" alt="">
+                                </div>
+                                <div class="program__content">
+                                    <span>Duration: 12 weeks</span>
+                                    <h4>Python programming course</h4>
+
+                                    <p>Описание: Изучите язык Python с нуля и получите навыки для создания веб-приложений, машинного обучения и анализа данных.</p>
+                                    <a href="#" class="boxed-btn5">Apply NOw</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single__program">
+                                <div class="program_thumb">
+                                    <img src="img/program/2.png" alt="">
+                                </div>
+                                <div class="program__content">
+                                    <span>Duration: 8 weeks</span>
+                                    <h4>Web Design Course</h4>
+                                    <p>Описание: Изучите основы дизайна веб-сайтов, включая HTML, CSS, и JavaScript. Научитесь создавать привлекательные и функциональные сайты.</p>
+                                    <a href="#" class="boxed-btn5">Apply NOw</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single__program">
+                                <div class="program_thumb">
+                                    <img src="img/program/3.png" alt="">
+                                </div>
+                                <div class="program__content">
+                                    <span>Duration: 10 weeks</span>
+                                    <h4>Cyber Security Course</h4>
+                                    <p>Описание: Научитесь обнаруживать и предотвращать кибератаки, методы для взлома систем а также защищать компьютерные системы и данные.</p>
+                                    <a href="#" class="boxed-btn5">Apply NOw</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                <div class="row">
+                            <div class="col-lg-4 col-md-6">
+                                <div class="single__program">
+                                    <div class="program_thumb">
+                                        <img src="img/program/1.png" alt="">
+                                    </div>
+                                    <div class="program__content">
+                                        <span>Duration: 12 weeks</span>
+                                        <h4>Python programming course</h4>
+
+                                        <p>Описание: Изучите язык Python с нуля и получите навыки для создания веб-приложений, машинного обучения и анализа данных.</p>
+                                        <a href="#" class="boxed-btn5">Apply NOw</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="single__program">
+                                    <div class="program_thumb">
+                                        <img src="img/program/3.png" alt="">
+                                    </div>
+                                    <div class="program__content">
+                                        <span>Duration: 8 weeks</span>
+                                        <h4>Web Design Course</h4>
+                                        <p>Описание: Изучите основы дизайна веб-сайтов, включая HTML, CSS, и JavaScript. Научитесь создавать привлекательные и функциональные сайты.</p>
+                                        <a href="#" class="boxed-btn5">Apply NOw</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="single__program">
+                                    <div class="program_thumb">
+                                        <img src="img/program/2.png" alt="">
+                                    </div>
+                                    <div class="program__content">
+                                        <span>Duration: 10 weeks</span>
+                                        <h4>Cyber Security Course</h4>
+                                        <p>Описание: Научитесь обнаруживать и предотвращать кибератаки, методы для взлома систем а также защищать компьютерные системы и данные.</p>
+                                        <a href="#" class="boxed-btn5">Apply NOw</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                                <div class="row">
+                            <div class="col-lg-4 col-md-6">
+                                <div class="single__program">
+                                    <div class="program_thumb">
+                                        <img src="img/program/3.png" alt="">
+                                    </div>
+                                    <div class="program__content">
+                                        <span>Duration: 12 weeks</span>
+                                        <h4>Python programming course</h4>
+
+                                        <p>Описание: Изучите язык Python с нуля и получите навыки для создания веб-приложений, машинного обучения и анализа данных.</p>
+                                        <a href="#" class="boxed-btn5">Apply NOw</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="single__program">
+                                    <div class="program_thumb">
+                                        <img src="img/program/2.png" alt="">
+                                    </div>
+                                    <div class="program__content">
+                                        <span>Duration: 8 weeks</span>
+                                        <h4>Web Design Course</h4>
+                                        <p>Описание: Изучите основы дизайна веб-сайтов, включая HTML, CSS, и JavaScript. Научитесь создавать привлекательные и функциональные сайты.</p>
+                                        <a href="#" class="boxed-btn5">Apply NOw</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="single__program">
+                                    <div class="program_thumb">
+                                        <img src="img/program/1.png" alt="">
+                                    </div>
+                                    <div class="program__content">
+                                        <span>Duration: 10 weeks</span>
+                                        <h4>Cyber Security Course</h4>
+                                        <p>Описание: Научитесь обнаруживать и предотвращать кибератаки, методы для взлома систем а также защищать компьютерные системы и данные.</p>
+                                        <a href="#" class="boxed-btn5">Apply NOw</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="tab-pane fade" id="nav-contact2" role="tabpanel" aria-labelledby="nav-contact-tab">
+                                <div class="row">
+                            <div class="col-lg-4 col-md-6">
+                                <div class="single__program">
+                                    <div class="program_thumb">
+                                        <img src="img/program/2.png" alt="">
+                                    </div>
+                                    <div class="program__content">
+                                        <span>Duration: 12 weeks</span>
+                                        <h4>Python programming course</h4>
+
+                                        <p>Описание: Изучите язык Python с нуля и получите навыки для создания веб-приложений, машинного обучения и анализа данных.</p>
+                                        <a href="#" class="boxed-btn5">Apply NOw</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="single__program">
+                                    <div class="program_thumb">
+                                        <img src="img/program/1.png" alt="">
+                                    </div>
+                                    <div class="program__content">
+                                        <span>Duration: 8 weeks</span>
+                                        <h4>Web Design Course</h4>
+                                        <p>Описание: Изучите основы дизайна веб-сайтов, включая HTML, CSS, и JavaScript. Научитесь создавать привлекательные и функциональные сайты.</p>
+                                        <a href="#" class="boxed-btn5">Apply NOw</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="single__program">
+                                    <div class="program_thumb">
+                                        <img src="img/program/3.png" alt="">
+                                    </div>
+                                    <div class="program__content">
+                                        <span>Duration: 10 weeks</span>
+                                        <h4>Cyber Security Course</h4>
+                                        <p>Описание: Научитесь обнаруживать и предотвращать кибератаки, методы для взлома систем а также защищать компьютерные системы и данные.</p>
+                                        <a href="#" class="boxed-btn5">Apply NOw</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="course_all_btn text-center">
+                        <a href="№" class="boxed-btn4">View All course</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="latest_coures_area">
+        <div class="latest_coures_inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="coures_info">
+                            <div class="section_title white_text">
+                                <h3>Latest Courses</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod <br> tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim <br> veniam, quis nostrud exercitation.</p>
+                            </div>
+                            <div class="coures_wrap d-flex">
+                                <div class="single_wrap">
+                                    <div class="icon">
+                                        <i class="flaticon-lab"></i>
+                                    </div>
+                                    <h4>Bachelor of <br>
+                                        Graphic Design</h4>
+                                        <p>Lorem ipsum dolor sit amet, sectetur adipiscing elit, sed do eiusmod tpor incididunt ut piscing vcs.</p>
+                                        <a href="#" class="boxed-btn5">Apply NOw</a>
+                                </div>
+                                <div class="single_wrap">
+                                    <div class="icon">
+                                        <i class="flaticon-lab"></i>
+                                    </div>
+                                    <h4>Bachelor of <br>
+                                        Graphic Design</h4>
+                                        <p>Lorem ipsum dolor sit amet, sectetur adipiscing elit, sed do eiusmod tpor incididunt ut piscing vcs.</p>
+                                        <a href="#" class="boxed-btn5">Apply NOw</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="recent_event_area section__padding">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-10">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div data-scroll-index='1' class="admission_area">
+        <div class="admission_inner">
+            <div class="container">
+                <div class="row justify-content-end">
+                    <div class="col-lg-7">
+                        <div class="admission_form">
+                            <h3>Apply for Admission</h3>
+                            <form action="#">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="single_input">
+                                            <input type="text" placeholder="First Name" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="single_input">
+                                            <input type="text" placeholder="Last Name" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="single_input">
+                                            <input type="text" placeholder="Phone Number" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="single_input">
+                                            <input type="text" placeholder="Email Address" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="single_input">
+                                            <textarea cols="30" placeholder="Write an Application" rows="10"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="apply_btn">
+                                            <button class="boxed-btn3" type="submit">Apply Now</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer_top">
+            <div class="container">
+                <div class="newsLetter_wrap">
+                    <div class="row justify-content-between">
+                        <div class="col-md-7">
+                            <div class="footer_widget">
+                                <h3 class="footer_title">
+                                    Stay Updated
+                                </h3>
+                                <form action="#" class="newsletter_form">
+                                    <input type="text" placeholder="Email Address">
+                                    <button type="submit">Subscribe Now</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-5">
+                            <div class="footer_widget">
+                                <h3 class="footer_title">
+                                    Stay Updated
+                                </h3>
+                                <div class="socail_links">
+                                    <ul>
+                                        <li>
+                                            <a href="#">
+                                                <i class="ti-facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-google-plus"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-linkedin"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-3 col-md-6 col-lg-3">
+                        <div class="footer_widget">
+                            <h3 class="footer_title">
+                                About Us
+                            </h3>
+                            <ul>
+                                <li><a href="#">Online Learning</a></li>
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Careers</a></li>
+                                <li><a href="#">Press Center</a></li>
+                                <li><a href="#">Become an Instructor</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 col-lg-3">
+                        <div class="footer_widget">
+                            <h3 class="footer_title">
+                                Campus
+                            </h3>
+                            <ul>
+                                <li><a href="#">Our Plans</a></li>
+                                <li><a href="#">Free Trial</a></li>
+                                <li><a href="#">Academic Solutions</a></li>
+                                <li><a href="#">Business Solutions</a></li>
+                                <li><a href="#">Government Solutions</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 col-lg-3">
+                        <div class="footer_widget">
+                            <h3 class="footer_title">
+                                Study
+                            </h3>
+                            <ul>
+                                <li><a href="#">Admissions Policy</a></li>
+                                <li><a href="#">Getting Started</a></li>
+                                <li><a href="#">Visa Information</a></li>
+                                <li><a href="#">Tuition Calculator</a></li>
+                                <li><a href="#">Request Information</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 col-lg-3">
+                        <div class="footer_widget">
+                            <h3 class="footer_title">
+                                Support
+                            </h3>
+                            <ul>
+                                <li><a href="#">Support</a></li>
+                                <li><a href="#">Contact Us</a></li>
+                                <li><a href="#">System Requirements</a></li>
+                                <li><a href="#">Register Activation Key</a></li>
+                                <li><a href="#">Site feedback</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copy-right_text">
+            <div class="container">
+                <div class="footer_border"></div>
+                <div class="row">
+                    <div class="col-xl-12">
+                        <p class="copy_right text-center">
+                            <p>
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved |  <i class="ti-heart" aria-hidden="true"></i> by Daniyal and Muhammed</p>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
 </body>
+
 </html>
