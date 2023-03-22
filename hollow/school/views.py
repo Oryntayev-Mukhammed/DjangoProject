@@ -13,6 +13,8 @@ def form(request):
 
 def index(request):
     return render(request, 'school/index.html', {'menu': menu, 'title': 'Главная страница'})
+def courses(request):
+    return render(request, 'school/courses.html')
 
 
 def about(request):
