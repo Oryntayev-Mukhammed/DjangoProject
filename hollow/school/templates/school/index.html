@@ -56,16 +56,8 @@
                                     <div class="main-menu  d-none d-lg-block">
                                         <nav>
                                             <ul id="navigation">
-                                                <li><a href="#">home</a></li>
+                                                <li><a href="{% url 'home' %}">home</a></li>
                                                 <li><a href="{% url 'courses' %}">Courses</a></li>
-												<li><a href="#">pages</a>
-												    <ul class="submenu">
-														<li><a href="#">Event</a></li>
-														<li><a href="#">Event Details</a></li>
-														<li><a href="#">Admissions</a></li>
-														<li><a href="#">Elements</a></li>
-													</ul>
-												</li>
 												<li><a href="#">Contact</a></li>
 											</ul>
 										</nav>
@@ -142,8 +134,8 @@
                     <div class="single_service d-flex align-items-center ">
 
                         <div class="service_info">
-                            <h4>Scholarship</h4>
-                            <p>Available</p>
+                            <h4>Front end development</h4>
+
                         </div>
                     </div>
                 </div>
@@ -151,8 +143,8 @@
                     <div class="single_service d-flex align-items-center ">
 
                         <div class="service_info">
-                            <h4>Scholarship</h4>
-                            <p>Available</p>
+                            <h4>Back end development</h4>
+
                         </div>
                     </div>
                 </div>
@@ -160,8 +152,8 @@
                     <div class="single_service d-flex align-items-center ">
 
                         <div class="service_info">
-                            <h4>Scholarship</h4>
-                            <p>Available</p>
+                            <h4>Information Security</h4>
+
                         </div>
                     </div>
                 </div>
@@ -227,7 +219,7 @@
                             <div class="col-lg-4 col-md-6">
                                 <div class="single__program">
                                     <div class="program_thumb">
-                                        <img src="school/images/program/1.png" alt="">
+                                        <img src="{% static 'school/images/program/1.png' %}" alt="">
                                     </div>
                                     <div class="program__content">
                                         <span>Duration: 12 weeks</span>

@@ -2562,13 +2562,11 @@ h3 {
 }
 
 @media (max-width: 767px) {
-  /* line 188, ../../Arafath/CL/january 2020/243.Education/HTML/scss/_footer.scss */
   .footer .socail_links ul li {
     margin-right: 0;
   }
 }
 
-/* line 195, ../../Arafath/CL/january 2020/243.Education/HTML/scss/_footer.scss */
 .footer .socail_links ul li a {
   font-size: 15px;
   width: 60px;
@@ -2587,90 +2585,28 @@ h3 {
   transition: 0.3s;
 }
 
-/* line 208, ../../Arafath/CL/january 2020/243.Education/HTML/scss/_footer.scss */
 .footer .socail_links ul li a i {
   font-size: 20px;
   position: relative;
 }
 
-/* line 214, ../../Arafath/CL/january 2020/243.Education/HTML/scss/_footer.scss */
 .footer .socail_links ul li:nth-child(2) a {
   background: #1da1f2;
 }
 
-/* line 217, ../../Arafath/CL/january 2020/243.Education/HTML/scss/_footer.scss */
 .footer .socail_links ul li:nth-child(3) a {
   background: #dd4b39;
 }
 
-/* line 220, ../../Arafath/CL/january 2020/243.Education/HTML/scss/_footer.scss */
 .footer .socail_links ul li:nth-child(4) a {
   background: #0077b5;
 }
 
-/* line 223, ../../Arafath/CL/january 2020/243.Education/HTML/scss/_footer.scss */
 .footer .socail_links ul li:hover a {
   color: #fff !important;
   background: #1fc2d9 !important;
 }
 
-/* line 1, ../../Arafath/CL/january 2020/243.Education/HTML/scss/_bradcam.scss */
-.breadcam_bg {
-  background-image: url(../img/banner/bradcam.png);
-}
-
-/* line 5, ../../Arafath/CL/january 2020/243.Education/HTML/scss/_bradcam.scss */
-.bradcam_area {
-  padding: 170px;
-  background-size: cover;
-  background-position: center center;
-  padding: 171px 0px;
-  background-repeat: no-repeat;
-}
-
-@media (max-width: 767px) {
-  /* line 5, ../../Arafath/CL/january 2020/243.Education/HTML/scss/_bradcam.scss */
-  .bradcam_area {
-    padding: 120px 0;
-  }
-}
-
-/* line 14, ../../Arafath/CL/january 2020/243.Education/HTML/scss/_bradcam.scss */
-.bradcam_area h3 {
-  font-size: 50px;
-  color: #fff;
-  font-weight: 400;
-  margin-bottom: 0;
-  font-family: "Abril Fatface", cursive;
-  text-transform: capitalize;
-}
-
-@media (max-width: 767px) {
-  /* line 14, ../../Arafath/CL/january 2020/243.Education/HTML/scss/_bradcam.scss */
-  .bradcam_area h3 {
-    font-size: 30px;
-  }
-}
-
-/* line 25, ../../Arafath/CL/january 2020/243.Education/HTML/scss/_bradcam.scss */
-.bradcam_area p {
-  font-size: 18px;
-  color: #fff;
-  font-weight: 400;
-  text-transform: capitalize;
-}
-
-/* line 30, ../../Arafath/CL/january 2020/243.Education/HTML/scss/_bradcam.scss */
-.bradcam_area p a {
-  color: #fff;
-}
-
-/* line 32, ../../Arafath/CL/january 2020/243.Education/HTML/scss/_bradcam.scss */
-.bradcam_area p a:hover {
-  color: #fff;
-}
-
-/* line 39, ../../Arafath/CL/january 2020/243.Education/HTML/scss/_bradcam.scss */
 .section-padding {
   padding-top: 100px;
   padding-bottom: 120px;
