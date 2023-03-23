@@ -56,16 +56,8 @@
                                     <div class="main-menu  d-none d-lg-block">
                                         <nav>
                                             <ul id="navigation">
-                                                <li><a href="#">home</a></li>
-                                                <li><a href="#">Courses</a></li>
-												<li><a href="#">pages <i class="ti-angle-down"></i></a>
-												    <ul class="submenu">
-														<li><a href="#">Event</a></li>
-														<li><a href="#">Event Details</a></li>
-														<li><a href="#">Admissions</a></li>
-														<li><a href="#">Elements</a></li>
-													</ul>
-												</li>
+                                                <li><a href="{% url 'home' %}">home</a></li>
+                                                <li><a href="{% url 'courses' %}">Courses</a></li>
 												<li><a href="#">Contact</a></li>
 											</ul>
 										</nav>
@@ -86,18 +78,6 @@
 			</div>
 		</div>
 	</header>
-
-    <div class="bradcam_area breadcam_bg">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="bradcam_text">
-                        <h3>Our Courses</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="popular_program_area section__padding program__page">
         <div class="container">
             <div class="row">
@@ -153,13 +133,13 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="single__program">
                                 <div class="program_thumb">
-                                    <img src="{% static 'school/images/program/1.jpg' %}" alt="">
+                                    <img src="{% static 'school/images/program/4.jpg' %}" alt="">
                                 </div>
                                 <div class="program__content">
-                                    <span>Duration: 12 weeks</span>
-                                    <h4>Python programming course</h4>
+                                    <span>Duration: 20-24 weeks</span>
+                                    <h4> Full Stack course</h4>
 
-                                    <p>Описание: Изучите язык Python с нуля и получите навыки для создания веб-приложений, машинного обучения и анализа данных.</p>
+                                    <p>Описание: Курс включает в себя обучение созданию полноценных веб-приложений от идеи до реализации.         ывфвфыывфвыфвфывфы</p>
                                     <a href="#" class="boxed-btn5">Apply NOw</a>
                                 </div>
                             </div>
@@ -167,13 +147,13 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="single__program">
                                 <div class="program_thumb">
-                                    <img src="{% static 'school/images/program/1.jpg' %}" alt="">
+                                    <img src="{% static 'school/images/program/5.jpg' %}" alt="">
                                 </div>
                                 <div class="program__content">
-                                    <span>Duration: 12 weeks</span>
-                                    <h4>Python programming course</h4>
+                                    <span>Duration: 16-20 weeks</span>
+                                    <h4>Mobile Application course</h4>
 
-                                    <p>Описание: Изучите язык Python с нуля и получите навыки для создания веб-приложений, машинного обучения и анализа данных.</p>
+                                    <p>Описание: Курс обучает созданию мобильных приложений на платформах iOS и Android. Обучение языкам программирования Swift и Kotlin</p>
                                     <a href="#" class="boxed-btn5">Apply NOw</a>
                                 </div>
                             </div>
@@ -181,13 +161,13 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="single__program">
                                 <div class="program_thumb">
-                                    <img src="{% static 'school/images/program/1.jpg' %}" alt="">
+                                    <img src="{% static 'school/images/program/6.png' %}" alt="">
                                 </div>
                                 <div class="program__content">
-                                    <span>Duration: 12 weeks</span>
-                                    <h4>Python programming course</h4>
+                                    <span>Duration: 22 weeks</span>
+                                    <h4>Java Programming course</h4>
 
-                                    <p>Описание: Изучите язык Python с нуля и получите навыки для создания веб-приложений, машинного обучения и анализа данных.</p>
+                                    <p>Описание: Этот курс на платформе Coursera научит вас основам программирования на Java и разработке программного обеспечения.</p>
                                     <a href="#" class="boxed-btn5">Apply NOw</a>
                                 </div>
                             </div>
@@ -195,13 +175,13 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="single__program">
                                 <div class="program_thumb">
-                                    <img src="{% static 'school/images/program/1.jpg' %}" alt="">
+                                    <img src="{% static 'school/images/program/7.png' %}" alt="">
                                 </div>
                                 <div class="program__content">
                                     <span>Duration: 12 weeks</span>
-                                    <h4>Python programming course</h4>
+                                    <h4>UX/UI Design course</h4>
 
-                                    <p>Описание: Изучите язык Python с нуля и получите навыки для создания веб-приложений, машинного обучения и анализа данных.</p>
+                                    <p>Описание:  Этот курс предлагает основы проектирования интерфейсов, включая исследование пользователей, создание прототипов и визуальный дизайн.</p>
                                     <a href="#" class="boxed-btn5">Apply NOw</a>
                                 </div>
                             </div>
@@ -209,13 +189,13 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="single__program">
                                 <div class="program_thumb">
-                                    <img src="{% static 'school/images/program/1.jpg' %}" alt="">
+                                    <img src="{% static 'school/images/program/8.jpg' %}" alt="">
                                 </div>
                                 <div class="program__content">
-                                    <span>Duration: 12 weeks</span>
-                                    <h4>Python programming course</h4>
+                                    <span>Duration: 8 weeks</span>
+                                    <h4>Data Science course</h4>
 
-                                    <p>Описание: Изучите язык Python с нуля и получите навыки для создания веб-приложений, машинного обучения и анализа данных.</p>
+                                    <p>Описание:  Этот курс поможет вам освоить основы анализа данных на языке Python и работы с библиотеками такими как NumPy, Pandas.</p>
                                     <a href="#" class="boxed-btn5">Apply NOw</a>
                                 </div>
                             </div>
@@ -223,13 +203,13 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="single__program">
                                 <div class="program_thumb">
-                                    <img src="{% static 'school/images/program/1.jpg' %}" alt="">
+                                    <img src="{% static 'school/images/program/9.jpg' %}" alt="">
                                 </div>
                                 <div class="program__content">
                                     <span>Duration: 12 weeks</span>
-                                    <h4>Python programming course</h4>
+                                    <h4>PHP course</h4>
 
-                                    <p>Описание: Изучите язык Python с нуля и получите навыки для создания веб-приложений, машинного обучения и анализа данных.</p>
+                                    <p>Описание: Этот курс предназначен для тех, кто хочет научиться создавать серверные приложения на PHP, создание и настройку баз данных и д.р.</p>
                                     <a href="#" class="boxed-btn5">Apply NOw</a>
                                 </div>
                             </div>
@@ -279,5 +259,137 @@
                                 </div>
                             </div>
                         </div>
-                </div>
 
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer_top">
+            <div class="container">
+                <div class="newsLetter_wrap">
+                    <div class="row justify-content-between">
+                        <div class="col-md-7">
+                            <div class="footer_widget">
+                                <h3 class="footer_title">
+                                    Stay Updated
+                                </h3>
+                                <form action="#" class="newsletter_form">
+                                    <input type="text" placeholder="Email Address">
+                                    <button type="submit">Subscribe Now</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-5">
+                            <div class="footer_widget">
+                                <h3 class="footer_title">
+                                    Stay Updated
+                                </h3>
+                                <div class="socail_links">
+                                    <ul>
+                                        <li>
+                                            <a href="#">
+                                                <i class="ti-facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-google-plus"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-linkedin"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-3 col-md-6 col-lg-3">
+                        <div class="footer_widget">
+                            <h3 class="footer_title">
+                                About Us
+                            </h3>
+                            <ul>
+                                <li><a href="#">Online Learning</a></li>
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Careers</a></li>
+                                <li><a href="#">Press Center</a></li>
+                                <li><a href="#">Become an Instructor</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 col-lg-3">
+                        <div class="footer_widget">
+                            <h3 class="footer_title">
+                                Campus
+                            </h3>
+                            <ul>
+                                <li><a href="#">Our Plans</a></li>
+                                <li><a href="#">Free Trial</a></li>
+                                <li><a href="#">Academic Solutions</a></li>
+                                <li><a href="#">Business Solutions</a></li>
+                                <li><a href="#">Government Solutions</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 col-lg-3">
+                        <div class="footer_widget">
+                            <h3 class="footer_title">
+                                Study
+                            </h3>
+                            <ul>
+                                <li><a href="#">Admissions Policy</a></li>
+                                <li><a href="#">Getting Started</a></li>
+                                <li><a href="#">Visa Information</a></li>
+                                <li><a href="#">Tuition Calculator</a></li>
+                                <li><a href="#">Request Information</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 col-lg-3">
+                        <div class="footer_widget">
+                            <h3 class="footer_title">
+                                Support
+                            </h3>
+                            <ul>
+                                <li><a href="#">Support</a></li>
+                                <li><a href="#">Contact Us</a></li>
+                                <li><a href="#">System Requirements</a></li>
+                                <li><a href="#">Register Activation Key</a></li>
+                                <li><a href="#">Site feedback</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copy-right_text">
+            <div class="container">
+                <div class="footer_border"></div>
+                <div class="row">
+                    <div class="col-xl-12">
+                        <p class="copy_right text-center">
+                            <p>
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved |  <i class="ti-heart" aria-hidden="true"></i> by Daniyal and Muhammed</p>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
