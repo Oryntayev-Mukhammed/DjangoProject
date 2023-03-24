@@ -18,6 +18,9 @@ def index(request):
 def courses(request):
     return render(request, 'school/courses.html')
 
+def contact(request):
+    return render(request, 'school/contact.html')
+
 
 def about(request):
     return render(request, 'school/about.html')
