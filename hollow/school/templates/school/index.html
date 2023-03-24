@@ -58,7 +58,7 @@
                                             <ul id="navigation">
                                                 <li><a href="{% url 'home' %}">home</a></li>
                                                 <li><a href="{% url 'courses' %}">Courses</a></li>
-												<li><a href="#">Contact</a></li>
+												<li><a href="{% url 'contact' %}">Contact</a></li>
 											</ul>
 										</nav>
 									</div>
@@ -78,55 +78,6 @@
 			</div>
 		</div>
 	</header>
-    <div class="slider_area">
-    <div class="slider_active owl-carousel">
-        <div class="single_slider  d-flex align-items-center slider_bg_1">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="slider_text ">
-                            <h3>Boost up your skills <br>
-                                with a new way of <br>
-                                learning.</h3>
-                            <a href="#" class="boxed-btn3">Get Start</a>
-                            <a href="#" class="boxed-btn4">Take a tour</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="single_slider  d-flex align-items-center slider_bg_2">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="slider_text ">
-                            <h3>Boost up your skills <br>
-                                with a new way of <br>
-                                learning.</h3>
-                            <a href="#" class="boxed-btn3">Get Start</a>
-                            <a href="#" class="boxed-btn4">Take a tour</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="single_slider  d-flex align-items-center slider_bg_1">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="slider_text ">
-                            <h3>Boost up your skills <br>
-                                with a new way of <br>
-                                learning.</h3>
-                            <a href="#" class="boxed-btn3">Get Start</a>
-                            <a href="#" class="boxed-btn4">Take a tour</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	</div>
     <div class="service_area gray_bg">
         <div class="container">
             <div class="row justify-content-center ">
@@ -350,7 +301,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="course_all_btn text-center">
-                        <a href="№" class="boxed-btn4">View All course</a>
+                        <a href="{% url 'courses' %}" class="boxed-btn4">View All course</a>
                     </div>
                 </div>
             </div>
