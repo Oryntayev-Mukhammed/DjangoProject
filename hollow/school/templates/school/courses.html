@@ -90,175 +90,24 @@
             <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                     <div class="row">
-                        <div class="col-lg-4 col-md-6">
-                            <div class="single__program">
-                                <div class="program_thumb">
-                                    <img src="{% static 'school/images/program/1.jpg' %}" alt="">
-                                </div>
-                                <div class="program__content">
-                                    <span>Duration: 12 weeks</span>
-                                    <h4>Python programming course</h4>
 
-                                    <p>Описание: Изучите язык Python с нуля и получите навыки для создания веб-приложений, машинного обучения и анализа данных.</p>
-                                    <a href="#" class="boxed-btn5">Apply NOw</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="single__program">
-                                <div class="program_thumb">
-                                    <img src="{% static 'school/images/program/2.jpg' %}" alt="">
-                                </div>
-                                <div class="program__content">
-                                    <span>Duration: 8 weeks</span>
-                                    <h4>Web Design Course</h4>
-                                    <p>Описание: Изучите основы дизайна веб-сайтов, включая HTML, CSS, и JavaScript. Научитесь создавать привлекательные и функциональные сайты.</p>
-                                    <a href="#" class="boxed-btn5">Apply NOw</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="single__program">
-                                <div class="program_thumb">
-                                    <img src="{% static 'school/images/program/3.jpg' %}" alt="">
-                                </div>
-                                <div class="program__content">
-                                    <span>Duration: 10 weeks</span>
-                                    <h4>Cyber Security Course</h4>
-                                    <p>Описание: Научитесь обнаруживать и предотвращать кибератаки, методы для взлома систем а также защищать компьютерные системы и данные.</p>
-                                    <a href="#" class="boxed-btn5">Apply NOw</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="single__program">
-                                <div class="program_thumb">
-                                    <img src="{% static 'school/images/program/4.jpg' %}" alt="">
-                                </div>
-                                <div class="program__content">
-                                    <span>Duration: 20-24 weeks</span>
-                                    <h4> Full Stack course</h4>
+                        {% for i in courses %}
+                            <div class="col-lg-4 col-md-6">
+                                <div class="single__program">
+                                    <div class="program_thumb">
+                                        <img src="{% static 'school/images/program/1.jpg' %}" alt="">
+                                    </div>
+                                    <div class="program__content">
+                                        <span>Duration: {{i.Duration}} weeks</span>
+                                        <h4>{{i.SubjectName}} course</h4>
 
-                                    <p>Описание: Курс включает в себя обучение созданию полноценных веб-приложений от идеи до реализации.         ывфвфыывфвыфвфывфы</p>
-                                    <a href="#" class="boxed-btn5">Apply NOw</a>
+                                        <p>Описание: {{i.Text}}.</p>
+                                        <a href="#" class="boxed-btn5">Apply NOw</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="single__program">
-                                <div class="program_thumb">
-                                    <img src="{% static 'school/images/program/5.jpg' %}" alt="">
-                                </div>
-                                <div class="program__content">
-                                    <span>Duration: 16-20 weeks</span>
-                                    <h4>Mobile Application course</h4>
-
-                                    <p>Описание: Курс обучает созданию мобильных приложений на платформах iOS и Android. Обучение языкам программирования Swift и Kotlin</p>
-                                    <a href="#" class="boxed-btn5">Apply NOw</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="single__program">
-                                <div class="program_thumb">
-                                    <img src="{% static 'school/images/program/6.png' %}" alt="">
-                                </div>
-                                <div class="program__content">
-                                    <span>Duration: 22 weeks</span>
-                                    <h4>Java Programming course</h4>
-
-                                    <p>Описание: Этот курс на платформе Coursera научит вас основам программирования на Java и разработке программного обеспечения.</p>
-                                    <a href="#" class="boxed-btn5">Apply NOw</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="single__program">
-                                <div class="program_thumb">
-                                    <img src="{% static 'school/images/program/7.png' %}" alt="">
-                                </div>
-                                <div class="program__content">
-                                    <span>Duration: 12 weeks</span>
-                                    <h4>UX/UI Design course</h4>
-
-                                    <p>Описание:  Этот курс предлагает основы проектирования интерфейсов, включая исследование пользователей, создание прототипов и визуальный дизайн.</p>
-                                    <a href="#" class="boxed-btn5">Apply NOw</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="single__program">
-                                <div class="program_thumb">
-                                    <img src="{% static 'school/images/program/8.jpg' %}" alt="">
-                                </div>
-                                <div class="program__content">
-                                    <span>Duration: 8 weeks</span>
-                                    <h4>Data Science course</h4>
-
-                                    <p>Описание:  Этот курс поможет вам освоить основы анализа данных на языке Python и работы с библиотеками такими как NumPy, Pandas.</p>
-                                    <a href="#" class="boxed-btn5">Apply NOw</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="single__program">
-                                <div class="program_thumb">
-                                    <img src="{% static 'school/images/program/9.jpg' %}" alt="">
-                                </div>
-                                <div class="program__content">
-                                    <span>Duration: 12 weeks</span>
-                                    <h4>PHP course</h4>
-
-                                    <p>Описание: Этот курс предназначен для тех, кто хочет научиться создавать серверные приложения на PHP, создание и настройку баз данных и д.р.</p>
-                                    <a href="#" class="boxed-btn5">Apply NOw</a>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
-                </div>
-                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                <div class="row">
-                            <div class="col-lg-4 col-md-6">
-                                <div class="single__program">
-                                    <div class="program_thumb">
-                                        <img src="school/images/program/1.png" alt="">
-                                    </div>
-                                    <div class="program__content">
-                                        <span>Duration: 12 weeks</span>
-                                        <h4>Python programming course</h4>
-
-                                        <p>Описание: Изучите язык Python с нуля и получите навыки для создания веб-приложений, машинного обучения и анализа данных.</p>
-                                        <a href="#" class="boxed-btn5">Apply NOw</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <div class="single__program">
-                                    <div class="program_thumb">
-                                        <img src="school/images/program/3.png" alt="">
-                                    </div>
-                                    <div class="program__content">
-                                        <span>Duration: 8 weeks</span>
-                                        <h4>Web Design Course</h4>
-                                        <p>Описание: Изучите основы дизайна веб-сайтов, включая HTML, CSS, и JavaScript. Научитесь создавать привлекательные и функциональные сайты.</p>
-                                        <a href="#" class="boxed-btn5">Apply NOw</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <div class="single__program">
-                                    <div class="program_thumb">
-                                        <img src="school/images/program/2.png" alt="">
-                                    </div>
-                                    <div class="program__content">
-                                        <span>Duration: 10 weeks</span>
-                                        <h4>Cyber Security Course</h4>
-                                        <p>Описание: Научитесь обнаруживать и предотвращать кибератаки, методы для взлома систем а также защищать компьютерные системы и данные.</p>
-                                        <a href="#" class="boxed-btn5">Apply NOw</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
                 </div>
             </div>
