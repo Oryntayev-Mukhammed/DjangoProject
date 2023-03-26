@@ -7,7 +7,10 @@ from .models import *
 menu = ["Войти", "Регистрация"]
 
 
-def form(request):
+def SingIn(request):
+    return render(request, 'school/form2.html')
+
+def SingUp(request):
     return render(request, 'school/form.html')
 
 
