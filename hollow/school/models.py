@@ -31,6 +31,8 @@ class Terms(models.Model):
 class Subjects(models.Model):
     slug = models.SlugField(max_length=255, unique=True, db_index=True, null=True, verbose_name='URL')
     SubjectName = models.CharField(max_length=255, verbose_name='Название занятия')
+    Text = models.TextField(verbose_name='Описание занятия')
+    Duration = models.IntegerField(verbose_name='Время обучения в неделях')
     TermId = models.ForeignKey(Terms, on_delete=models.CASCADE, verbose_name='К какому семестру')
 
     def __str__(self):

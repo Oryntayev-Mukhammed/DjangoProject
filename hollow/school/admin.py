@@ -18,7 +18,7 @@ class MarkTypeAdmin(admin.ModelAdmin):
 
 
 class SubjectsAdmin(admin.ModelAdmin):
-    list_display = ['id', 'SubjectName', 'TermId']
+    list_display = ['id', 'SubjectName', 'Text', 'Duration', 'TermId']
     list_display_links = ['id', 'SubjectName']
     search_fields = ['SubjectName']
     list_filter = ['TermId']

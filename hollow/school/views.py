@@ -3,9 +3,16 @@ from django.http import HttpResponse, HttpResponseNotFound, HttpResponseServerEr
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404
 from .models import *
+from django.views.generic import ListView
 
 menu = ["Войти", "Регистрация"]
 
+
+class CourseList(ListView):
+    model = Subjects
+    template_name = 'school/courses.html'
+    context_object_name = 'courses'
+    extra_context = {'title': 'Курсы'}
 
 def SingIn(request):
     return render(request, 'school/form2.html')
