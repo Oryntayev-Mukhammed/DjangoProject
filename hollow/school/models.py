@@ -5,6 +5,8 @@ class MarkType(models.Model):
     slug = models.SlugField(max_length=255, unique=True, db_index=True, null=True, verbose_name='URL')
     MarkType = models.CharField(max_length=255, verbose_name='Тип задания')
     TypeName = models.CharField(max_length=255, verbose_name='Название задания')
+    time_create = models.DateTimeField(auto_now_add=True, null=True, verbose_name="Время создания")
+    time_update = models.DateTimeField(auto_now=True, null=True, verbose_name="Время изменения")
 
     def __str__(self):
         return self.TypeName
@@ -18,6 +20,8 @@ class MarkType(models.Model):
 class Terms(models.Model):
     slug = models.SlugField(max_length=255, unique=True, db_index=True, null=True, verbose_name='URL')
     TermName = models.CharField(max_length=255, verbose_name='Название семестра')
+    time_create = models.DateTimeField(auto_now_add=True, null=True, verbose_name="Время создания")
+    time_update = models.DateTimeField(auto_now=True, null=True, verbose_name="Время изменения")
 
     def __str__(self):
         return self.TermName
@@ -34,6 +38,8 @@ class Subjects(models.Model):
     Text = models.TextField(verbose_name='Описание занятия')
     Duration = models.IntegerField(verbose_name='Время обучения в неделях')
     TermId = models.ForeignKey(Terms, on_delete=models.CASCADE, verbose_name='К какому семестру')
+    time_create = models.DateTimeField(auto_now_add=True, null=True, verbose_name="Время создания")
+    time_update = models.DateTimeField(auto_now=True, null=True, verbose_name="Время изменения")
 
     def __str__(self):
         return self.SubjectName
@@ -47,6 +53,8 @@ class Subjects(models.Model):
 class PersonType(models.Model):
     slug = models.SlugField(max_length=255, unique=True, db_index=True, null=True, verbose_name='URL')
     Prsntype = models.CharField(max_length=255, verbose_name='Тип')
+    time_create = models.DateTimeField(auto_now_add=True, null=True, verbose_name="Время создания")
+    time_update = models.DateTimeField(auto_now=True, null=True, verbose_name="Время изменения")
 
     def __str__(self):
         return self.Prsntype
@@ -64,6 +72,8 @@ class Person(models.Model):
     PrsnThrdName = models.CharField(max_length=255, verbose_name='Отчество')
     PrsnDOB = models.DateField(verbose_name='Дата рождения')
     PrsnType = models.ForeignKey(PersonType, on_delete=models.CASCADE, verbose_name='Принадлежность')
+    time_create = models.DateTimeField(auto_now_add=True, null=True, verbose_name="Время создания")
+    time_update = models.DateTimeField(auto_now=True, null=True, verbose_name="Время изменения")
 
     def __str__(self):
         return self.PrsnFristName
@@ -80,6 +90,8 @@ class Marks(models.Model):
     PrsnId = models.ForeignKey(Person, on_delete=models.CASCADE, verbose_name='Ученик')
     Mark = models.IntegerField(verbose_name='Оценка')
     MarkType = models.ForeignKey(MarkType, on_delete=models.CASCADE, verbose_name='Задание')
+    time_create = models.DateTimeField(auto_now_add=True, null=True, verbose_name="Время создания")
+    time_update = models.DateTimeField(auto_now=True, null=True, verbose_name="Время изменения")
 
     class Meta:
         verbose_name = 'Оценка'
@@ -94,6 +106,8 @@ class StudentData(models.Model):
     StdJoinDate = models.DateField(verbose_name='Дата зачисления')
     PrsnId = models.ForeignKey(Person, on_delete=models.CASCADE, verbose_name='Персона')
     StdAddress = models.CharField(max_length=255, verbose_name='Место жительства')
+    time_create = models.DateTimeField(auto_now_add=True, null=True, verbose_name="Время создания")
+    time_update = models.DateTimeField(auto_now=True, null=True, verbose_name="Время изменения")
 
     def __str__(self):
         return self.StdName
@@ -109,6 +123,8 @@ class Class(models.Model):
     ClassName = models.CharField(max_length=255, verbose_name='Название группы')
     StdId = models.ForeignKey(StudentData, on_delete=models.CASCADE, verbose_name='Студент')
     SubjectId = models.ForeignKey(Subjects, on_delete=models.CASCADE, verbose_name='Занятие')
+    time_create = models.DateTimeField(auto_now_add=True, null=True, verbose_name="Время создания")
+    time_update = models.DateTimeField(auto_now=True, null=True, verbose_name="Время изменения")
 
 
     class Meta:
