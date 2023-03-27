@@ -4,29 +4,42 @@ from django.http import Http404
 from django.shortcuts import render, get_object_or_404
 from .models import *
 from django.views.generic import ListView
+from .utils import *
+from .templatetags.school_tags import *
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-menu = ["Войти", "Регистрация"]
 
-
-class CourseList(ListView):
+class CourseList(DataMixin, ListView):
+    paginate_by = 6
     model = Subjects
     template_name = 'school/courses.html'
     context_object_name = 'courses'
-    extra_context = {'title': 'Курсы'}
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title="Курсы")
+        return dict(list(context.items()) + list(c_def.items()))
+
+
+class HomeView(DataMixin, ListView):
+    model = Subjects
+    template_name = 'school/index.html'
+    context_object_name = 'courses'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['last_item'] = get_last_course()
+        context['last_three_items'] = get_last_three_course()
+        c_def = self.get_user_context(title="OSI")
+        return dict(list(context.items()) + list(c_def.items()))
+
 
 def SingIn(request):
     return render(request, 'school/form2.html')
 
+
 def SingUp(request):
     return render(request, 'school/form.html')
-
-
-def index(request):
-    return render(request, 'school/index.html', {'menu': menu, 'title': 'Главная страница'})
-
-
-def courses(request):
-    return render(request, 'school/courses.html')
 
 def contact(request):
     return render(request, 'school/contact.html')
