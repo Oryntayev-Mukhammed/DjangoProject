@@ -34,6 +34,9 @@ class HomeView(DataMixin, ListView):
         return dict(list(context.items()) + list(c_def.items()))
 
 
+def Details(request):
+    return render(request, 'school/details.html')
+
 def SingIn(request):
     return render(request, 'school/form2.html')
 
