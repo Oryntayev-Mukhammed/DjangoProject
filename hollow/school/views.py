@@ -9,6 +9,10 @@ from .templatetags.school_tags import *
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
+def Profile(request):
+    return render(request, 'school/profile.html')
+
+
 class CourseList(DataMixin, ListView):
     paginate_by = 6
     model = Subjects
@@ -19,6 +23,9 @@ class CourseList(DataMixin, ListView):
         context = super().get_context_data(**kwargs)
         c_def = self.get_user_context(title="Курсы")
         return dict(list(context.items()) + list(c_def.items()))
+
+
+
 
 
 class HomeView(DataMixin, ListView):
@@ -33,6 +40,9 @@ class HomeView(DataMixin, ListView):
         c_def = self.get_user_context(title="OSI")
         return dict(list(context.items()) + list(c_def.items()))
 
+
+def Details(request):
+    return render(request, 'school/details.html')
 
 def SingIn(request):
     return render(request, 'school/form2.html')

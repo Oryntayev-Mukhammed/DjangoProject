@@ -9,6 +9,8 @@ urlpatterns = [
     path('term/<slug:term_slug>/', show_term, name='term'),
     path('courses/', CourseList.as_view(), name='courses'),
     path('contact/', contact, name='contact'),
+    path('details/', Details, name='details'),
+    path('profile/', Profile, name='profile')
 
 
 ]

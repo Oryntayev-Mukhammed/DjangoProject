@@ -12,18 +12,11 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'school/images/icon.png' %}">
-    <link rel="stylesheet" href="{% static 'school/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'school/css/owl.carousel.min.css' %}">
-    <link rel="stylesheet" href="{% static 'school/css/magnific-popup.css' %}">
-    <link rel="stylesheet" href="{% static 'school/css/font-awesome.min.css' %}">
-    <link rel="stylesheet" href="{% static 'school/css/themify-icons.css' %}">
-    <link rel="stylesheet" href="{% static 'school/css/nice-select.css' %}">
-    <link rel="stylesheet" href="{% static 'school/css/flaticon.css' %}">
-    <link rel="stylesheet" href="{% static 'school/css/gijgo.css' %}">
-    <link rel="stylesheet" href="{% static 'school/css/animate.css' %}">
-    <link rel="stylesheet" href="{% static 'school/css/slicknav.css' %}">
     <link rel="stylesheet" href="{% static 'school/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'school/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'school/css/details.css' %}">
+    <link rel="stylesheet" href="{% static 'school/css/profile.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -60,12 +53,13 @@
                                                 <li><a href="{% url 'home' %}">home</a></li>
                                                 <li><a href="{% url 'courses' %}">Courses</a></li>
 												<li><a href="{% url 'contact' %}">Contact</a></li>
+
 											</ul>
 										</nav>
 									</div>
 									<div class="Appointment">
 										<div class="book_btn d-none d-lg-block">
-											<a data-scroll-nav='1' href="#">Apply Now</a>
+											<a data-scroll-nav='1' href="{% url 'profile' %}">Profile</a>
 										</div>
 									</div>
 								</div>
