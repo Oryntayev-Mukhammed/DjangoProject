@@ -1,9 +1,15 @@
+from django.contrib.auth import logout, login
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.views import LoginView
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseServerError, HttpResponseBadRequest, \
     HttpResponseForbidden
 from django.http import Http404
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse_lazy
+
+from .forms import *
 from .models import *
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView
 from .utils import *
 from .templatetags.school_tags import *
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -25,9 +31,6 @@ class CourseList(DataMixin, ListView):
         return dict(list(context.items()) + list(c_def.items()))
 
 
-
-
-
 class HomeView(DataMixin, ListView):
     model = Subjects
     template_name = 'school/index.html'
@@ -44,12 +47,40 @@ class HomeView(DataMixin, ListView):
 def Details(request):
     return render(request, 'school/details.html')
 
-def SingIn(request):
-    return render(request, 'school/form2.html')
+
+class LoginUser(DataMixin, LoginView):
+    form_class = LoginUserForm
+    template_name = 'school/form2.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title="Авторизация")
+        return dict(list(context.items()) + list(c_def.items()))
+
+    def get_success_url(self):
+        return reverse_lazy('home')
 
 
-def SingUp(request):
-    return render(request, 'school/form.html')
+class RegisterUser(DataMixin, CreateView):
+    form_class = RegisterUserForm
+    template_name = 'school/form.html'
+    success_url = reverse_lazy('singIn')
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title="Регистрация")
+        return dict(list(context.items()) + list(c_def.items()))
+
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        return redirect('home')
+
+
+def signout_user(request):
+    logout(request)
+    return redirect('home')
+
 
 def contact(request):
     return render(request, 'school/contact.html')
