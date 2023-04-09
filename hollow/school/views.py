@@ -9,7 +9,7 @@ from django.urls import reverse_lazy
 
 from .forms import *
 from .models import *
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, FormView
 from .utils import *
 from .templatetags.school_tags import *
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -82,8 +82,19 @@ def signout_user(request):
     return redirect('home')
 
 
-def contact(request):
-    return render(request, 'school/contact.html')
+class ContactFormView(DataMixin, FormView):
+    form_class = ContactForm
+    template_name = 'school/contact.html'
+    success_url = reverse_lazy('home')
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title="Обратная связь")
+        return dict(list(context.items()) + list(c_def.items()))
+
+    def form_valid(self, form):
+        print(form.cleaned_data)
+        return redirect('home')
 
 
 def about(request):
