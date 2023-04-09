@@ -21,7 +21,9 @@ from school.views import *
 from hollow import settings
 
 urlpatterns = [
+    path('grappelli/', include('grappelli.urls')),
     path('admin/', admin.site.urls),
+    path('captcha/', include('captcha.urls')),
     path('', include('school.urls')),
 ]
 
