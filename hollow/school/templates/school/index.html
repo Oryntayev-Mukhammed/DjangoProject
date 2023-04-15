@@ -1,5 +1,6 @@
 {% extends 'school/base.html' %}
 
+{% load cache %}
 {% block content %}
 <div class="service_area gray_bg">
         <div class="container">
@@ -46,6 +47,7 @@
             <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                     <div class="row">
+                        {% cache 60 courses %}
                         {% for i in last_three_items %}
                             <div class="col-lg-4 col-md-6">
                                 <div class="single__program">
@@ -62,6 +64,7 @@
                                 </div>
                             </div>
                         {% endfor %}
+                        {% endcache %}
                     </div>
                 </div>
             </div>
