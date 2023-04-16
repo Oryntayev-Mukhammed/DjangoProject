@@ -28,36 +28,28 @@ class SubjectsAdmin(admin.ModelAdmin):
     readonly_fields = ('time_create', 'time_update')
 
 
-class PersonTypeAdmin(admin.ModelAdmin):
-    list_display = ['id', 'Prsntype', 'time_create', 'time_update']
-    list_display_links = ['id', 'Prsntype']
-    prepopulated_fields = {"slug": ("Prsntype",)}
-    readonly_fields = ('time_create', 'time_update')
-
-
-class PersonAdmin(admin.ModelAdmin):
-    list_display = ['id', 'PrsnFristName', 'PrsnScndName', 'PrsnThrdName', 'PrsnDOB', 'PrsnType', 'time_create', 'time_update']
-    list_display_links = ['id', 'PrsnFristName']
-    search_fields = ['PrsnFristName']
-    list_filter = ['PrsnType']
-    prepopulated_fields = {"slug": ("PrsnFristName",)}
-    readonly_fields = ('time_create', 'time_update')
-
-
 class MarksAdmin(admin.ModelAdmin):
-    list_display = ['id', 'SubjectId', 'PrsnId', 'Mark', 'MarkType', 'time_create', 'time_update']
+    list_display = ['id', 'SubjectId', 'ClassId', 'Mark', 'MarkType', 'time_create', 'time_update']
     list_display_links = ['id', 'SubjectId']
-    search_fields = ['SubjectId', 'PrsnId', 'MarkType']
+    search_fields = ['SubjectId', 'StdId', 'MarkType']
     list_filter = ['SubjectId', 'MarkType']
     prepopulated_fields = {"slug": ("Mark",)}
     readonly_fields = ('time_create', 'time_update')
 
 
 class StudentDataAdmin(admin.ModelAdmin):
-    list_display = ['id', 'StdName', 'StdDOB', 'StdJoinDate', 'PrsnId', 'StdAddress', 'time_create', 'time_update']
+    list_display = ['id', 'StdName', 'StdScndName', 'StdThrdName', 'StdDOB', 'StdJoinDate', 'StdAddress', 'time_create', 'time_update']
     list_display_links = ['id', 'StdName']
     search_fields = ['StdName']
     prepopulated_fields = {"slug": ("StdName",)}
+    readonly_fields = ('time_create', 'time_update')
+
+
+class TeacherDataAdmin(admin.ModelAdmin):
+    list_display = ['id', 'TName', 'TScndName', 'TThrdName', 'TDOB', 'TJoinDate', 'TAddress', 'time_create', 'time_update']
+    list_display_links = ['id', 'TName']
+    search_fields = ['TName']
+    prepopulated_fields = {"slug": ("TName",)}
     readonly_fields = ('time_create', 'time_update')
 
 
@@ -73,8 +65,7 @@ class ClassAdmin(admin.ModelAdmin):
 admin.site.register(Terms, TermsAdmin)
 admin.site.register(MarkType, MarkTypeAdmin)
 admin.site.register(Subjects, SubjectsAdmin)
-admin.site.register(PersonType, PersonTypeAdmin)
-admin.site.register(Person, PersonAdmin)
 admin.site.register(Marks, MarksAdmin)
 admin.site.register(StudentData, StudentDataAdmin)
+admin.site.register(TeacherData, TeacherDataAdmin)
 admin.site.register(Class, ClassAdmin)
