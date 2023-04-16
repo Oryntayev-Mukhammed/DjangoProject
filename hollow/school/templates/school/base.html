@@ -17,7 +17,11 @@
     <link rel="stylesheet" href="{% static 'school/css/styles.css' %}">
     <link rel="stylesheet" href="{% static 'school/css/details.css' %}">
     <link rel="stylesheet" href="{% static 'school/css/profile.css' %}">
+    <link rel="stylesheet" href="{% static 'school/css/resume.css' %}">
+    <link rel="stylesheet" href="{% static 'school/css/graduates.css' %}">
+    <link rel="stylesheet" href="{% static 'school/css/about.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <header>
@@ -63,6 +67,7 @@
                                                 <li><a href="{% url 'home' %}">home</a></li>
                                                 <li><a href="{% url 'courses' %}">Courses</a></li>
 												<li><a href="{% url 'contact' %}">Contact</a></li>
+                                                <li><a href="{% url 'about' %}">About</a></li>
 
 											</ul>
 										</nav>
