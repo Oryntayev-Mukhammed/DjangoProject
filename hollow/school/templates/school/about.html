@@ -1,18 +1,168 @@
-<!DOCTYPE html>
+{% extends 'school/base.html' %}
 {% load static %}
-{% load school_tags %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link type="text/css" rel="stylesheet" href="{% static 'school/css/styles.css' %}" />
-    <title>О таблице</title>
-</head>
-<body>
-    {% get_terms as terms %}
-    <li>
-        {% for p in terms %}
-        <h2>{{p.TermName}}</h2>
-        {% endfor %}
-    </li>
-</body>
-</html>
+{% block content %}
+<header>
+		<h1 style="text-align: center; margin-top: 75px; margin-bottom: 20px;">О нашей компании</h1>
+</header>
+<main>
+    <section>
+        <h2 style="text-align: center; margin-bottom: 20px;">Почему выбрать наше обучение?</h2>
+        <p style="color: black; margin-left: 20px;">1. Наша компания занимается обучением уже несколько лет и имеет множество довольных учеников. Мы предлагаем курсы высого качества, которые разработаны специалистами в своих областях.</p>
+        <p style="color: black; margin-left: 20px;">2. Мы также уделяем особое внимание практическим навыкам, так как знаем, что это помогает нашим ученикам лучше понимать материал и применять его на практике.</p>
+        <p style="color: black; margin-left: 20px;">3. Кроме того, наша команда всегда готова помочь ученикам в случае возникновения вопросов или трудностей.</p>
+    </section>
+    <section>
+        <h2 style="text-align: center; margin-bottom: 20px; margin-top: 20px;">Преимущества нашего обучения</h2>
+        <ul style="margin-left: 20px;">
+            <li>1. Получение качественных знаний в выбранной области</li>
+            <li>2. Практические навыки, необходимые для работы в выбранной области</li>
+            <li>3. Возможность получить сертификат об окончании курса</li>
+            <li>4. Возможность получить рекомендации от наших преподавателей и специалистов в выбранной области</li>
+            <li>5. Возможность получить доступ к нашей базе знаний и ресурсам для дальнейшего обучения и развития</li>
+        </ul>
+    </section>
+    <section>
+        <h2 style="text-align: center; margin-bottom: 20px; margin-top: 20px;">Что вы получите после завершения курса?</h2>
+        <p style="color: black; margin-left: 10px;">После успешного завершения курса у вас будет:</p>
+        <ul style="margin-bottom: 50px; margin-left: 20px;">
+            <li>1. Глубокое понимание выбранной области</li>
+            <li>2. Практические навыки, необходимые для работы в выбранной области</li>
+            <li>3. Сертификат об окончании курса, который подтверждает ваши знания и навыки</li>
+            <li>4. Рекомендации от наших преподавателей и специалистов в выбранной области, которые могут помочь вам при поиске работы или продвижении по карьерной лестнице</li>
+            <li>5. Доступ к нашей базе знаний и ресурсам для дальнейшего обучения и развития</li>
+        </ul>
+    </section>
+    <section>
+        <h1 style="text-align: center;">Наши преподаватели</h1>
+        <p style="margin-left: 20px; text-align: center;">Наши преподаватели - это профессионалы в своей области, имеющие богатый опыт работы и высшее образование. Они не только преподают материал, но и делятся своими знаниями и практическим опытом с учениками.</p>
+    </section>
+
+    <section>
+        <h2 style="text-align: center; margin-top: 50px;">Резюме наших преподавателей</h2>
+        <div class="teacher-cards">
+            <div class="teacher-card">
+                <img src="{% static 'school/images/teachers/1.jpg' %}" alt="">
+                <h3>Иванов Иван</h3>
+                <p>Преподаватель по курсу "Веб-разработка". Имеет высшее образование в области информационных технологий. Работал в компании "WebDev Inc." в течение 5 лет. Преподает курсы по HTML, CSS, JavaScript и PHP.</p>
+            </div>
+            <div class="teacher-card">
+                <img src="{% static 'school/images/teachers/1.jpg' %}" alt="">
+                <h3>Мария Петрова</h3>
+                <p>Преподаватель по курсу "Дизайн интерфейсов". Имеет высшее образование в области дизайна. Работала в компании "Design Studio" в течение 7 лет. Преподает курсы по дизайну интерфейсов, графическому дизайну и анимации.</p>
+            </div>
+            <div class="teacher-card">
+                <img src="{% static 'school/images/teachers/1.jpg' %}" alt="">
+                <h3>Максим Сидоров</h3>
+                <p>Преподаватель по курсу "Мобильная разработка". Имеет высшее образование в области информационных технологий. Работал в компании "Mobile Apps Inc." в течение 3 лет. Преподает курсы по разработке мобильных приложений для iOS и Android.</p>
+            </div>
+            <div class="teacher-card">
+                <img src="{% static 'school/images/teachers/1.jpg' %}" alt="">
+                <h3>Павел Смирнов</h3>
+                <p>Преподаватель по курсу "Базы данных". Имеет высшее образование в области информационных технологий. Работал в компании "DB Solutions" в течение 8 лет. Преподает курсы по SQL, MongoDB и Redis.</p>
+            </div>
+            <div class="teacher-card">
+                <img src="{% static 'school/images/teachers/1.jpg' %}" alt="">
+                <h3>Анна Кузнецова</h3>
+                <p>Full Stack разработчик, имеет большой опыт работы в области веб-разработки и разработки приложений. Владеет знаниями в области HTML, CSS, JavaScript, Node.js, React, Angular, MongoDB, MySQL и многих других технологий. Опыт работы в компаниях "WebDev Inc.", "AppDev LLC", "CodeCrafters" более 10 лет.</p>
+            </div>
+            <div class="teacher-card">
+                <img src="{% static 'school/images/teachers/1.jpg' %}" alt="">
+                <h3>Алексей Иванов</h3>
+                <p>опытный UX/UI дизайнер с более чем 7-летним опытом работы в области дизайна пользовательских интерфейсов. Он обладает глубоким пониманием пользовательского опыта и старается создавать красивые и функциональные интерфейсы для пользователей. Алексей работал над проектами различной сложности, от простых сайтов до масштабных приложений, и имеет отличные навыки в области дизайна макетов, прототипирования и тестирования пользовательского опыта.</p>
+            </div>
+        </div>
+
+    </section>
+    <section>
+        <div class="graduates">
+            <h2>Наши выпускники</h2>
+            <div class="graduate-card">
+                <div class="graduate-image">
+                    <img src="{% static 'school/images/stet1.jpg' %}" alt="">
+                </div>
+                <div class="graduate-info">
+                    <h3>Джейсон Стейтем</h3>
+                    <p>Окончил курс в сентябре 2022 года. Работает в компании XYZ в должности Full Stack разработчика.</p>
+                    <p>Во время обучения разработал веб-приложение для управления задачами, которое получило высокие оценки от преподавателей. Также принимал участие в хакатонах и выигрывал призы.</p>
+                </div>
+            </div>
+            <div class="graduate-card">
+                <div class="graduate-image">
+                    <img src="{% static 'school/images/hard2.jpg' %}" alt="">
+                </div>
+                <div class="graduate-info">
+                    <h3>Том Харди</h3>
+                    <p>Окончил курс в июне 2021 года. Работает в компании ABC в должности UX/UI дизайнера.</p>
+                    <p>Во время обучения разработал дизайн для веб-приложения, которое получило высокую оценку от преподавателей и было выбрано для реализации в рамках проекта компании-партнера. Также принимал участие в проектах с реальными заказчиками и получал положительные отзывы.</p>
+                </div>
+            </div>
+            <div class="graduate-card">
+                <div class="graduate-image">
+                    <img src="{% static 'school/images/hhh.jpg' %}" alt="">
+                </div>
+                <div class="graduate-info">
+                    <h3>Дуэйн Джонсон</h3>
+                    <p>Выпускник курса front-end разработки. Закончил обучение в 2022 году с отличием. Изучал основные языки web-разработки, такие как HTML, CSS и JavaScript, а также современные фреймворки и библиотеки, включая React, Vue.js и Bootstrap.</p>
+                    <p>В настоящее время работает в качестве front-end разработчика в компании XYZ, где занимается созданием и поддержкой пользовательского интерфейса для нескольких веб-приложений.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="benefits-container">
+            <h1 style="text-align: center; margin-top: 75px; margin-bottom: 20px;">Так же наша компания OSI предоставляет льготы</h1>
+            <h2 style="text-align: center; margin-bottom: 20px;">Льготы для наших клиентов</h2>
+            <p style="color: black; margin-left: 10px;">Мы хотим помочь всем желающим получить образование и поэтому предоставляем следующие льготы:</p>
+            <ul style="margin-bottom: 50px; margin-left: 20px;">
+                <li style="margin-top: 20px;">Инвалиды имеют право на скидку 50% на все курсы. Для получения скидки необходимо предоставить свидетельство об инвалидности.</li>
+                <li style="margin-top: 20px;">Семьи с детьми младше 18 лет получают бесплатный доступ к нашим онлайн-курсам. Для получения льготы необходимо предоставить свидетельство о рождении ребенка.</li>
+                <li style="margin-top: 20px;">Студенты имеют право на скидку 30% на все курсы. Для получения скидки необходимо предоставить студенческий билет.</li>
+                <li style="margin-top: 20px;">Безработные имеют право на бесплатный доступ к базовым курсам. Для получения льготы необходимо предоставить документ, подтверждающий ваш статус безработного.</li>
+            </ul>
+            <p style="color: black; margin-left: 10px;">Для получения льготы необходимо связаться с нашей службой поддержки клиентов и предоставить соответствующие документы, подтверждающие ваш статус. Мы будем рады помочь вам получить необходимые знания и навыки для достижения ваших целей.</p>
+        </div>
+
+    </section>
+
+    <section>
+        <h1 style="text-align: center; margin-top: 100px;">В чем различие между Front-end, Back-end и Cyber Security?</h1>
+        <h2 style="text-align: center; margin-top: 10px;">Ниже есть объяснение между их различиями и особенностями </h2>
+        <div class="card-container">
+            <div class="card">
+                <img src="{% static 'school/images/pg1/frontend.png' %}" alt="">
+                <div class="card-content">
+                    <h2 style="text-align: center; margin-top: 30px;">Front-end development</h2>
+                    <p style="padding: 10px;">Front-end development - это процесс создания пользовательского интерфейса веб-приложения. Этот процесс включает в себя разработку HTML, CSS и JavaScript кода, который обеспечивает взаимодействие пользователя с приложением.</p>
+                    <ul style="padding: 10px;">
+                        <li>Задачи: разработка интерфейса, оптимизация загрузки страницы, тестирование пользовательского интерфейса.</li>
+                        <li>Языки и инструменты: HTML, CSS, JavaScript, React, Vue.js, Angular и др.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <img src="{% static 'school/images/pg1/backend.png' %}" alt="">
+                <div class="card-content">
+                    <h2 style="text-align: center; margin-top: 30px;">Back-end development</h2>
+                    <p style="padding: 10px;">Back-end development - это процесс создания серверной части веб-приложения, которая обеспечивает работу с базами данных, обработку данных и взаимодействие с другими системами.</p>
+                    <ul style="padding: 10px;">
+                        <li style="margin-top: 30px;">Задачи: разработка серверной части, оптимизация производительности, защита от взлома и атак.</li>
+                        <li>Языки и инструменты: PHP, Python, Ruby, Node.js, Express.js, Django и др.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <img src="{% static 'school/images/pg1/cyber.jpg' %}" alt="">
+                <div class="card-content">
+                    <h2 style="text-align: center; margin-top: 30px;">Cyber Security</h2>
+                    <p style="padding: 10px;">Cyber Security - это процесс защиты информации от несанкционированного доступа, использования, раскрытия, изменения или уничтожения.</p>
+                    <ul style="padding: 10px;">
+                        <li style="margin-top: 50px;">Задачи: защита от взлома и кибератак, обеспечение конфиденциальности данных, предотвращение утечек информации.</li>
+                        <li>Языки и инструменты: Firewall, VPN, IDS/IPS, Penetration Testing, Security Audits и др.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+{% endblock %}
