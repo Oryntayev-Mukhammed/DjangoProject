@@ -50,61 +50,13 @@ class Subjects(models.Model):
         ordering = ['id']
 
 
-class PersonType(models.Model):
-    slug = models.SlugField(max_length=255, unique=True, db_index=True, null=True, verbose_name='URL')
-    Prsntype = models.CharField(max_length=255, verbose_name='Тип')
-    time_create = models.DateTimeField(auto_now_add=True, null=True, verbose_name="Время создания")
-    time_update = models.DateTimeField(auto_now=True, null=True, verbose_name="Время изменения")
-
-    def __str__(self):
-        return self.Prsntype
-
-    class Meta:
-        verbose_name = 'Тип персоны'
-        verbose_name_plural = 'Тип персон'
-        ordering = ['id']
-
-
-class Person(models.Model):
-    slug = models.SlugField(max_length=255, unique=True, db_index=True, null=True, verbose_name='URL')
-    PrsnFristName = models.CharField(max_length=255, verbose_name='Имя')
-    PrsnScndName = models.CharField(max_length=255, verbose_name='Фамилия')
-    PrsnThrdName = models.CharField(max_length=255, verbose_name='Отчество')
-    PrsnDOB = models.DateField(verbose_name='Дата рождения')
-    PrsnType = models.ForeignKey(PersonType, on_delete=models.CASCADE, verbose_name='Принадлежность')
-    time_create = models.DateTimeField(auto_now_add=True, null=True, verbose_name="Время создания")
-    time_update = models.DateTimeField(auto_now=True, null=True, verbose_name="Время изменения")
-
-    def __str__(self):
-        return self.PrsnFristName
-
-    class Meta:
-        verbose_name = 'Человек'
-        verbose_name_plural = 'Люди'
-        ordering = ['id']
-
-
-class Marks(models.Model):
-    slug = models.SlugField(max_length=255, unique=True, db_index=True, null=True, verbose_name='URL')
-    SubjectId = models.ForeignKey(Subjects, on_delete=models.CASCADE, verbose_name='Занятие')
-    PrsnId = models.ForeignKey(Person, on_delete=models.CASCADE, verbose_name='Ученик')
-    Mark = models.IntegerField(verbose_name='Оценка')
-    MarkType = models.ForeignKey(MarkType, on_delete=models.CASCADE, verbose_name='Задание')
-    time_create = models.DateTimeField(auto_now_add=True, null=True, verbose_name="Время создания")
-    time_update = models.DateTimeField(auto_now=True, null=True, verbose_name="Время изменения")
-
-    class Meta:
-        verbose_name = 'Оценка'
-        verbose_name_plural = 'Оценки'
-        ordering = ['id']
-
-
 class StudentData(models.Model):
     slug = models.SlugField(max_length=255, unique=True, db_index=True, null=True, verbose_name='URL')
-    StdName = models.CharField(max_length=255, verbose_name='Имя студента')
-    StdDOB = models.DateField(verbose_name='День рождения')
+    StdName = models.CharField(max_length=255, verbose_name='Имя')
+    StdScndName = models.CharField(max_length=255, verbose_name='Фамилия')
+    StdThrdName = models.CharField(max_length=255, verbose_name='Отчество')
+    StdDOB = models.DateField(verbose_name='Дата рождения')
     StdJoinDate = models.DateField(verbose_name='Дата зачисления')
-    PrsnId = models.ForeignKey(Person, on_delete=models.CASCADE, verbose_name='Персона')
     StdAddress = models.CharField(max_length=255, verbose_name='Место жительства')
     time_create = models.DateTimeField(auto_now_add=True, null=True, verbose_name="Время создания")
     time_update = models.DateTimeField(auto_now=True, null=True, verbose_name="Время изменения")
@@ -115,6 +67,26 @@ class StudentData(models.Model):
     class Meta:
         verbose_name = 'Студент'
         verbose_name_plural = 'Студенты'
+        ordering = ['id']
+
+
+class TeacherData(models.Model):
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, null=True, verbose_name='URL')
+    TName = models.CharField(max_length=255, verbose_name='Имя')
+    TScndName = models.CharField(max_length=255, verbose_name='Фамилия')
+    TThrdName = models.CharField(max_length=255, verbose_name='Отчество')
+    TDOB = models.DateField(verbose_name='Дата рождения')
+    TJoinDate = models.DateField(verbose_name='Дата зачисления')
+    TAddress = models.CharField(max_length=255, verbose_name='Место жительства')
+    time_create = models.DateTimeField(auto_now_add=True, null=True, verbose_name="Время создания")
+    time_update = models.DateTimeField(auto_now=True, null=True, verbose_name="Время изменения")
+
+    def __str__(self):
+        return self.Tname
+
+    class Meta:
+        verbose_name = 'Учитель'
+        verbose_name_plural = 'Учителя'
         ordering = ['id']
 
 
@@ -130,4 +102,20 @@ class Class(models.Model):
     class Meta:
         verbose_name = 'Группа'
         verbose_name_plural = 'Группы'
+        ordering = ['id']
+
+
+class Marks(models.Model):
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, null=True, verbose_name='URL')
+    SubjectId = models.ForeignKey(Subjects, on_delete=models.CASCADE, verbose_name='Занятие')
+    ClassId = models.ForeignKey(Class, on_delete=models.CASCADE, verbose_name='Номер группы')
+    StudentId = models.ForeignKey(StudentData, on_delete=models.CASCADE, verbose_name='Ученик')
+    Mark = models.IntegerField(verbose_name='Оценка')
+    MarkType = models.ForeignKey(MarkType, on_delete=models.CASCADE, verbose_name='Тип Задания')
+    time_create = models.DateTimeField(auto_now_add=True, null=True, verbose_name="Время создания")
+    time_update = models.DateTimeField(auto_now=True, null=True, verbose_name="Время изменения")
+
+    class Meta:
+        verbose_name = 'Оценка'
+        verbose_name_plural = 'Оценки'
         ordering = ['id']

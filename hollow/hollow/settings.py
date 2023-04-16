@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'school.apps.ShopConfig',
     'bootstrap5',
-    'captcha'
+    'captcha',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -112,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Almaty'
 
 USE_I18N = True
 
