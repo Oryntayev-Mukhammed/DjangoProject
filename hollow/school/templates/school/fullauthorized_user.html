@@ -1,0 +1,46 @@
+{% extends 'school/base.html' %}
+
+{% block content %}
+<div class="container-full">
+  <h1>Профиль пользователя</h1>
+  <table>
+    <tr>
+      <th>Имя</th>
+      <td>Иван</td>
+    </tr>
+    <tr>
+      <th>Фамилия</th>
+      <td>Иванов</td>
+    </tr>
+    <tr>
+      <th>Дата рождения</th>
+      <td>01.01.1990</td>
+    </tr>
+    <tr>
+      <th>Электронная почта</th>
+      <td>ivanov@example.com</td>
+    </tr>
+    <tr>
+      <th>Телефон</th>
+      <td>+7 (999) 123-45-67</td>
+    </tr>
+    <tr>
+      <th>Город</th>
+      <td>Москва</td>
+    </tr>
+    <tr>
+      <th>Образование</th>
+      <td>Высшее техническое</td>
+    </tr>
+    <tr>
+      <th>Опыт работы</th>
+      <td>3 года</td>
+    </tr>
+    <tr>
+      <th>Навыки программирования</th>
+      <td>Python, JavaScript, HTML/CSS</td>
+    </tr>
+  </table>
+  <a href="/edit_profile">Редактировать профиль</a>
+</div>
+{% endblock %}

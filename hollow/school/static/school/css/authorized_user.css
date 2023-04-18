@@ -1,0 +1,66 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+main {
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+section {
+  border: 2px solid #ccc;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+th {
+  background-color: #eee;
+}
+
+.save-as {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.save-as:hover {
+  background-color: #0062cc;
+}
+
+input[type=text], input[type=email], input[type=password], input[type=tel], select, textarea{
+    background-color: #f8fafe;
+    width: 300px;
+    border: none;
+    border-top: 0px;
+    border-radius: 10px;
+    outline: 0;
+    margin-bottom: 30px;
+    padding-left: 10px;
+    color: black;
+}

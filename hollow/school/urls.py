@@ -12,7 +12,10 @@ urlpatterns = [
     path('courses/', CourseList.as_view(), name='courses'),
     path('contact/', ContactFormView.as_view(), name='contact'),
     path('details/', Details, name='details'),
-    path('profile/', Profile, name='profile')
+    path('profile/', Profile, name='profile'),
+    path('authorized/', Authorized_user, name='authorized'),
+    path('nonauthorized/', nonAuthorized_user, name='nonauthorized'),
+    path('fullautho/', fullAuthorized_user, name='fullauthorized_user')
 
 
 ]

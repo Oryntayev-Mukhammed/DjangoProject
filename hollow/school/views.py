@@ -18,6 +18,15 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 def Profile(request):
     return render(request, 'school/profile.html')
 
+def fullAuthorized_user(request):
+    return render(request, 'school/fullauthorized_user.html')
+
+def nonAuthorized_user(request):
+    return render(request, 'school/nonauthorized_user.html')
+
+def Authorized_user(request):
+    return render(request, 'school/authorized_user.html')
+
 
 class CourseList(DataMixin, ListView):
     paginate_by = 6
