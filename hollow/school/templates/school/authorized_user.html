@@ -1,0 +1,83 @@
+{% extends 'school/base.html' %}
+
+{% block content %}
+
+<main>
+    <section>
+        <h1>Мой профиль</h1>
+        <p>Здесь вы можете управлять своим аккаунтом и просмотреть свои данные:</p>
+        <ul>
+            <li>Имя: Иван</li>
+            <li>Фамилия: Иванов</li>
+            <li>Электронная почта: ivanov@mail.com</li>
+            <li>Телефон: +7 (123) 456-78-90</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Изменить личные данные</h2>
+        <form action="/update_profile" method="post">
+            <label for="first_name">Имя:</label>
+            <input type="text" id="first_name" name="first_name" value="Иван"><br>
+
+            <label for="last_name">Фамилия:</label>
+            <input type="text" id="last_name" name="last_name" value="Иванов"><br>
+
+            <label for="email">Электронная почта:</label>
+            <input type="email" id="email" name="email" value="ivanov@mail.com"><br>
+
+            <label for="phone">Телефон:</label>
+            <input type="tel" id="phone" name="phone" value="+7 (123) 456-78-90"><br>
+
+            <button class="save-as" type="submit">Сохранить изменения</button>
+        </form>
+    </section>
+
+    <section>
+        <h2>Настройки уведомлений</h2>
+        <form action="/update_notifications" method="post">
+            <label for="email_notifications">Получать уведомления на электронную почту:</label>
+            <input type="checkbox" id="email_notifications" name="email_notifications" checked><br>
+
+            <label for="sms_notifications">Получать уведомления на телефон:</label>
+            <input type="checkbox" id="sms_notifications" name="sms_notifications"><br>
+
+            <button class="save-as" type="submit">Сохранить изменения</button>
+        </form>
+    </section>
+
+    <section>
+        <h2>История заказов</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>№</th>
+                <th>Название курса</th>
+                <th>Дата заказа</th>
+                <th>Стоимость</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>Курс по HTML и CSS</td>
+                <td>01.01.2023</td>
+                <td>5000 руб.</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Курс по JavaScript</td>
+                <td>15.01.2023</td>
+                <td>10000 руб.</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Курс по PHP и MySQL</td>
+                <td>01.02.2023</td>
+                <td>8000 руб.</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+{% endblock %}

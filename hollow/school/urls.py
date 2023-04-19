@@ -13,6 +13,9 @@ urlpatterns = [
     path('contact/', ContactFormView.as_view(), name='contact'),
     path('details/', Details, name='details'),
     path('profile/', Profile, name='profile'),
+    path('authorized/', Authorized_user, name='authorized'),
+    path('nonauthorized/', nonAuthorized_user, name='nonauthorized'),
+    path('fullautho/', fullAuthorized_user, name='fullauthorized_user')
     path('api/v1/subjectlist/', SubjectsAPIView.as_view()),
     path('api/v1/subjectlist/<int:pk>/', SubjectsAPIView.as_view()),
     path('api/v1/marktypelist/', MarkTypeAPIView.as_view()),
