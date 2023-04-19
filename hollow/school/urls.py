@@ -16,6 +16,20 @@ urlpatterns = [
     path('authorized/', Authorized_user, name='authorized'),
     path('nonauthorized/', nonAuthorized_user, name='nonauthorized'),
     path('fullautho/', fullAuthorized_user, name='fullauthorized_user')
-
+    path('api/v1/subjectlist/', SubjectsAPIView.as_view()),
+    path('api/v1/subjectlist/<int:pk>/', SubjectsAPIView.as_view()),
+    path('api/v1/marktypelist/', MarkTypeAPIView.as_view()),
+    path('api/v1/marktypelist/<int:pk>/', MarkTypeAPIView.as_view()),
+    path('api/v1/termlist/', TermsAPIView.as_view()),
+    path('api/v1/termlist/<int:pk>/', TermsAPIView.as_view()),
+    path('api/v1/termlist/', TermsAPIView.as_view()),
+    path('api/v1/studentlist/<int:pk>/', StudentAPIView.as_view()),
+    path('api/v1/studentlist/', StudentAPIView.as_view()),
+    path('api/v1/teacherlist/<int:pk>/', TeacherAPIView.as_view()),
+    path('api/v1/teacherlist/', TeacherAPIView.as_view()),
+    path('api/v1/classlist/<int:pk>/', ClassAPIView.as_view()),
+    path('api/v1/classlist/', ClassAPIView.as_view()),
+    path('api/v1/marklist/<int:pk>/', MarksAPIView.as_view()),
+    path('api/v1/marklist/', MarksAPIView.as_view())
 
 ]
