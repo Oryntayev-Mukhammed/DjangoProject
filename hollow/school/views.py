@@ -25,6 +25,15 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 def Profile(request):
     return render(request, 'school/profile.html')
 
+def nonCanva(request):
+    return render(request, 'school/noncanva.html')
+
+def Task(request):
+    return render(request, 'school/task.html')
+
+def Canva(request):
+    return render(request, 'school/canva.html')
+
 def fullAuthorized_user(request):
     return render(request, 'school/fullauthorized_user.html')
 

@@ -1,0 +1,22 @@
+{% extends 'school/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Задание: Создание веб-страницы</h5>
+    <p class="card-text">Описание: Создать простую веб-страницу с использованием HTML и CSS. Необходимо использовать следующие элементы: заголовок, абзацы, списки, изображения, ссылки. Страница должна быть адаптивной и хорошо выглядеть на разных устройствах. </p>
+    <p class="card-text">Дедлайн: 28 апреля, 23:59</p>
+    <p class="card-text">Время на выполнение: 5 дней</p>
+    <form>
+      <div class="mb-3">
+        <label for="exampleFormControlFile1" class="form-label">Загрузить файл с выполненным заданием:</label>
+        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+      </div>
+      <button type="submit" class="btn btn-primary">Отправить</button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

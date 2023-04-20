@@ -1,0 +1,111 @@
+{% extends 'school/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h3 class="card-title">Занятия</h3>
+          <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                  <h5>Основы WEB</h5>
+                  <time datetime="2023-04-17T10:00">17 апреля, 10:00</time>
+              </li>
+              <li class="list-group-item">
+                  <h5>Основы WEB</h5>
+                  <time datetime="2023-04-17T10:00">17 апреля, 10:00</time>
+              </li>
+              <li class="list-group-item">
+                  <h5>Основы WEB</h5>
+                  <time datetime="2023-04-17T10:00">17 апреля, 10:00</time>
+              </li>
+            <!-- Список занятий -->
+
+          </ul>
+        </div>
+      </div>
+      <div class="card mb-4">
+        <div class="card-body">
+          <h3 class="card-title">Оценки</h3>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <h5>Основы WEB</h5>
+                    <p>Лекция: 4.5</p>
+                    <p>Задание 1: 5.0</p>
+                    <p>Задание 2: 4.5</p>
+                    <p>Задание 3: 4.0</p>
+                </li>
+                <li class="list-group-item">
+                    <h5>Основы WEB</h5>
+                    <p>Лекция: 4.5</p>
+                    <p>Задание 1: 5.0</p>
+                    <p>Задание 2: 4.5</p>
+                    <p>Задание 3: 4.0</p>
+                </li>
+
+
+            </ul>
+          <!-- Таблица с оценками -->
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h3 class="card-title">Программа курса</h3>
+          <ul class="list-group list-group-flush">
+              <li class="list-group-item"><i class="far fa-calendar-alt"></i> 23 апреля 2023: Введение в HTML</li>
+              <li class="list-group-item"><i class="far fa-calendar-alt"></i> 30 апреля 2023: Введение в CSS</li>
+              <li class="list-group-item"><i class="far fa-calendar-alt"></i> 7 мая 2023: JavaScript: Основы</li>
+              <li class="list-group-item"><i class="far fa-calendar-alt"></i> 14 мая 2023: JavaScript: Продвинутый</li>
+              <li class="list-group-item"><i class="far fa-calendar-alt"></i>Project</li>
+            <!-- Список тем курса -->
+          </ul>
+        </div>
+      </div>
+      <div class="card mb-4">
+        <div class="card-body">
+          <h3 class="card-title">Задания</h3>
+          <ul class="list-group list-group-flush">
+              <li class="list-group-item" style="margin-top: 20px;">
+                  <a href="{% url 'task' %}">Task 1</a>
+              </li>
+              <li class="list-group-item">
+                  <a href="{% url 'task' %}">Task 2</a>
+              </li>
+              <li class="list-group-item">
+                  <a href="{% url 'task' %}">Task 3</a>
+              </li>
+              <li class="list-group-item">
+                  <a href="{% url 'task' %}">Task 4</a>
+              </li>
+              <li class="list-group-item">
+                  <a href="{% url 'task' %}">Task 5</a>
+              </li>
+              <li class="list-group-item">
+                  <a href="{% url 'task' %}">Task 6</a>
+              </li>
+              <li class="list-group-item">
+                  <a href="{% url 'task' %}">Task 7</a>
+              </li>
+              <li class="list-group-item">
+                  <a href="{% url 'task' %}">Task 8</a>
+              </li>
+              <li class="list-group-item">
+                  <a href="{% url 'task' %}">Task 9</a>
+              </li>
+              <li class="list-group-item">
+                  <a href="{% url 'task' %}">Task 10</a>
+              </li>
+
+            <!-- Список заданий -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,73 +1,101 @@
 {% extends 'school/base.html' %}
+{% load static %}
 
 {% block content %}
 
-<main>
-    <section>
-      <h2>Личные данные</h2>
-      <form action="/update_profile" method="post">
-        <label for="first_name">Имя:</label>
-        <input type="text" id="first_name" name="first_name" placeholder="Введите своё имя"><br>
+<div class="main-content">
+    <div class="container mt-7">
+      <div class="row">
+        <div class="col-xl-8 m-auto order-xl-1">
+          <div class="card bg-secondary shadow">
+            <div class="card-header bg-white border-0" style="text-align: center;">
+              <div class="row align-items-center">
+                <div class="col-8" style="text-align: center;">
+                  <h3 class="mb-0" >My account</h3>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <form>
+                <h6 class="heading-small text-muted mb-4">User information</h6>
+                <div class="pl-lg-4">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-username">Username</label>
+                        <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-email">Email address</label>
+                        <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="jesse@example.com">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-first-name">First name</label>
+                        <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-last-name">Last name</label>
+                        <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr class="my-4">
+                <!-- Address -->
+                <h6 class="heading-small text-muted mb-4">Contact information</h6>
+                <div class="pl-lg-4">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-address">Address</label>
+                        <input style="" id="input-address" class="form-control form-control-alternative" placeholder="Home Address"  type="text">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-city">City</label>
+                        <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City">
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-country">Country</label>
+                        <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="Country" >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr class="my-4">
+                <!-- Description -->
+                <h6 class="heading-small text-muted mb-4">Настройки уведомлений</h6>
+                <div class="pl-lg-4">
+                  <div class="form-group focused">
+                    <label for="email_notifications">Получать уведомления на электронную почту:</label>
+                      <input type="checkbox" id="email_notifications" name="email_notifications" checked>
 
-        <label for="last_name">Фамилия:</label>
-        <input type="text" id="last_name" name="last_name" placeholder="Введите свою фамилию"><br>
+                      <label for="sms_notifications">Получать уведомления на телефон:</label>
+                      <input type="checkbox" id="sms_notifications" name="sms_notifications"><br>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" placeholder="Введите свой email">
+                      <button class="save-as" type="submit" style="background-color: #4CAF50; color: white; padding: 12px 24px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; font-weight: bold;">Сохранить изменения</button>
 
-        <label for="phone">Телефон:</label>
-        <input type="tel" id="phone" name="phone" placeholder="Введите свой номер телефона"><br>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-        <button class="save-as1" type="submit">Сохранить изменения</button>
-
-      </form>
-    </section>
-
-    <section>
-        <h2>Настройки уведомлений</h2>
-        <form action="/update_notifications" method="post">
-            <label for="email_notifications">Получать уведомления на электронную почту:</label>
-            <input type="checkbox" id="email_notifications" name="email_notifications" checked><br>
-
-            <label for="sms_notifications">Получать уведомления на телефон:</label>
-            <input type="checkbox" id="sms_notifications" name="sms_notifications"><br>
-
-            <button class="save-as1" type="submit">Сохранить изменения</button>
-        </form>
-    </section>
-
-    <section>
-        <h2>История заказов</h2>
-        <table>
-            <thead>
-            <tr>
-                <th>№</th>
-                <th>Название курса</th>
-                <th>Дата заказа</th>
-                <th>Стоимость</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>1</td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            </tbody>
-        </table>
-    </section>
-</main>
 {% endblock %}

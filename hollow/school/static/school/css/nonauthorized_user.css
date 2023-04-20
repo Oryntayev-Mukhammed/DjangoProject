@@ -38,7 +38,7 @@ th {
   background-color: #eee;
 }
 
-.save-as1 {
+.save-as {
 
   background-color: #007bff;
   color: #fff;
@@ -50,7 +50,7 @@ th {
   transition: all 0.2s ease-in-out;
 }
 
-.save-as1:hover {
+.save-as:hover {
   background-color: #0062cc;
 }
 
