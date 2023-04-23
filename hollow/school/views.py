@@ -7,14 +7,16 @@ from django.http import HttpResponse, HttpResponseNotFound, HttpResponseServerEr
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
-from rest_framework import generics, status
+from rest_framework import generics, status, viewsets
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAdminUser
 
 from .forms import *
 from .models import *
 from django.views.generic import ListView, CreateView, FormView, DetailView
 
+from .permissions import IsAdminOrReadOnly
 from .serializer import SubjectsSerializer, MarkTypeSerializer, TermsSerializer, StudentSerializer, TeacherSerializer, \
     ClassSerializer, MarksSerializer
 from .utils import *
@@ -145,6 +147,55 @@ class ContactFormView(DataMixin, FormView):
         return redirect('home')
 
 
+class SubjectAPIList(generics.ListCreateAPIView):
+    queryset = Subjects.objects.all()
+    serializer_class = SubjectsSerializer
+
+
+class SubjectAPIUpdate(generics.RetrieveUpdateAPIView):
+    queryset = Subjects.objects.all()
+    serializer_class = SubjectsSerializer
+    permission_classes = (IsAdminOrReadOnly, )
+
+
+class SubjectAPIDestroy(generics.RetrieveDestroyAPIView):
+    queryset = Subjects.objects.all()
+    serializer_class = SubjectsSerializer
+    permission_classes = (IsAdminOrReadOnly, )
+
+
+
+
+class TermViewSet(viewsets.ModelViewSet):
+    queryset = Terms.objects.all()
+    serializer_class = TermsSerializer
+
+
+class MarkTypeViewSet(viewsets.ModelViewSet):
+    queryset = MarkType.objects.all()
+    serializer_class = MarkTypeSerializer
+
+
+class StudentViewSet(viewsets.ModelViewSet):
+    queryset = StudentData.objects.all()
+    serializer_class = StudentSerializer
+
+
+class TeacherViewSet(viewsets.ModelViewSet):
+    queryset = TeacherData.objects.all()
+    serializer_class = TeacherSerializer
+
+
+class ClassViewSet(viewsets.ModelViewSet):
+    queryset = Class.objects.all()
+    serializer_class = ClassSerializer
+
+
+class MarkViewSet(viewsets.ModelViewSet):
+    queryset = Marks.objects.all()
+    serializer_class = MarksSerializer
+
+
 def about(request):
     return render(request, 'school/about.html')
 
@@ -171,221 +222,221 @@ def archive(request, year):
     return HttpResponse(f"<h1>Архив по годам</h1><p>{year}</p>")
 
 
-class SubjectsAPIView(APIView):
-    def get(self, request):
-        w = Subjects.objects.all()
-        return Response({'subjects': SubjectsSerializer(w, many=True).data})
-
-    def post(self, request):
-
-        serializer = SubjectsSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-
-        return Response({'Subjects': serializer.data})
-
-    def put(self, request, *args, **kwargs):
-        pk = kwargs.get("pk", None)
-        try:
-            instance = Subjects.objects.get(pk=pk)
-        except Subjects.DoesNotExist:
-            return Response({"error": "Subject does not exist"}, status=status.HTTP_404_NOT_FOUND)
-
-        serializer = SubjectsSerializer(instance, data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(serializer.data)
-
-    def delete(self, request, pk):
-        subject = Subjects.objects.get(pk=pk)
-        subject.delete()
-        return Response({'message': 'Subject has been deleted.'})
-
-
-class TermsAPIView(APIView):
-    def get(self, request):
-        w = Terms.objects.all()
-        return Response({'Terms': TermsSerializer(w, many=True).data})
-
-    def post(self, request):
-
-        serializer = TermsSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-
-        return Response({'Terms': serializer.data})
-
-    def put(self, request, *args, **kwargs):
-        pk = kwargs.get("pk", None)
-        try:
-            instance = Terms.objects.get(pk=pk)
-        except Terms.DoesNotExist:
-            return Response({"error": "Term does not exist"}, status=status.HTTP_404_NOT_FOUND)
-
-        serializer = TermsSerializer(instance, data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(serializer.data)
-
-    def delete(self, request, pk):
-        subject = Terms.objects.get(pk=pk)
-        subject.delete()
-        return Response({'message': 'Term has been deleted.'})
+# class SubjectsAPIView(APIView):
+#     def get(self, request):
+#         w = Subjects.objects.all()
+#         return Response({'subjects': SubjectsSerializer(w, many=True).data})
+#
+#     def post(self, request):
+#
+#         serializer = SubjectsSerializer(data=request.data)
+#         serializer.is_valid(raise_exception=True)
+#         serializer.save()
+#
+#         return Response({'Subjects': serializer.data})
+#
+#     def put(self, request, *args, **kwargs):
+#         pk = kwargs.get("pk", None)
+#         try:
+#             instance = Subjects.objects.get(pk=pk)
+#         except Subjects.DoesNotExist:
+#             return Response({"error": "Subject does not exist"}, status=status.HTTP_404_NOT_FOUND)
+#
+#         serializer = SubjectsSerializer(instance, data=request.data)
+#         serializer.is_valid(raise_exception=True)
+#         serializer.save()
+#         return Response(serializer.data)
+#
+#     def delete(self, request, pk):
+#         subject = Subjects.objects.get(pk=pk)
+#         subject.delete()
+#         return Response({'message': 'Subject has been deleted.'})
 
 
-class MarkTypeAPIView(APIView):
-    def get(self, request):
-        w = MarkType.objects.all()
-        return Response({'MarkTypes': MarkTypeSerializer(w, many=True).data})
-
-    def post(self, request):
-
-        serializer = MarkTypeSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-
-        return Response({'MarkTypes': serializer.data})
-
-    def put(self, request, *args, **kwargs):
-        pk = kwargs.get("pk", None)
-        try:
-            instance = MarkType.objects.get(pk=pk)
-        except MarkType.DoesNotExist:
-            return Response({"error": "MarkType does not exist"}, status=status.HTTP_404_NOT_FOUND)
-
-        serializer = MarkTypeSerializer(instance, data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(serializer.data)
-
-    def delete(self, request, pk):
-        subject = MarkType.objects.get(pk=pk)
-        subject.delete()
-        return Response({'message': 'MarkType has been deleted.'})
-
-
-class StudentAPIView(APIView):
-    def get(self, request):
-        w = StudentData.objects.all()
-        return Response({'Students': TermsSerializer(w, many=True).data})
-
-    def post(self, request):
-
-        serializer = StudentSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-
-        return Response({'Students': serializer.data})
-
-    def put(self, request, *args, **kwargs):
-        pk = kwargs.get("pk", None)
-        try:
-            instance = StudentData.objects.get(pk=pk)
-        except StudentData.DoesNotExist:
-            return Response({"error": "Student does not exist"}, status=status.HTTP_404_NOT_FOUND)
-
-        serializer = StudentSerializer(instance, data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(serializer.data)
-
-    def delete(self, request, pk):
-        subject = StudentData.objects.get(pk=pk)
-        subject.delete()
-        return Response({'message': 'Student has been deleted.'})
+# class TermsAPIView(APIView):
+#     def get(self, request):
+#         w = Terms.objects.all()
+#         return Response({'Terms': TermsSerializer(w, many=True).data})
+#
+#     def post(self, request):
+#
+#         serializer = TermsSerializer(data=request.data)
+#         serializer.is_valid(raise_exception=True)
+#         serializer.save()
+#
+#         return Response({'Terms': serializer.data})
+#
+#     def put(self, request, *args, **kwargs):
+#         pk = kwargs.get("pk", None)
+#         try:
+#             instance = Terms.objects.get(pk=pk)
+#         except Terms.DoesNotExist:
+#             return Response({"error": "Term does not exist"}, status=status.HTTP_404_NOT_FOUND)
+#
+#         serializer = TermsSerializer(instance, data=request.data)
+#         serializer.is_valid(raise_exception=True)
+#         serializer.save()
+#         return Response(serializer.data)
+#
+#     def delete(self, request, pk):
+#         subject = Terms.objects.get(pk=pk)
+#         subject.delete()
+#         return Response({'message': 'Term has been deleted.'})
 
 
-class TeacherAPIView(APIView):
-    def get(self, request):
-        w = TeacherData.objects.all()
-        return Response({'Teachers': TeacherSerializer(w, many=True).data})
-
-    def post(self, request):
-
-        serializer = TeacherSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-
-        return Response({'Teachers': serializer.data})
-
-    def put(self, request, *args, **kwargs):
-        pk = kwargs.get("pk", None)
-        try:
-            instance = TeacherData.objects.get(pk=pk)
-        except TeacherData.DoesNotExist:
-            return Response({"error": "Teacher does not exist"}, status=status.HTTP_404_NOT_FOUND)
-
-        serializer = TeacherSerializer(instance, data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(serializer.data)
-
-    def delete(self, request, pk):
-        subject = TeacherData.objects.get(pk=pk)
-        subject.delete()
-        return Response({'message': 'Teacher has been deleted.'})
-
-
-class ClassAPIView(APIView):
-    def get(self, request):
-        w = Class.objects.all()
-        return Response({'Classes': ClassSerializer(w, many=True).data})
-
-    def post(self, request):
-
-        serializer = ClassSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-
-        return Response({'Classes': serializer.data})
-
-    def put(self, request, *args, **kwargs):
-        pk = kwargs.get("pk", None)
-        try:
-            instance = Class.objects.get(pk=pk)
-        except Class.DoesNotExist:
-            return Response({"error": "Class does not exist"}, status=status.HTTP_404_NOT_FOUND)
-
-        serializer = ClassSerializer(instance, data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(serializer.data)
-
-    def delete(self, request, pk):
-        subject = Class.objects.get(pk=pk)
-        subject.delete()
-        return Response({'message': 'Class has been deleted.'})
+# class MarkTypeAPIView(APIView):
+#     def get(self, request):
+#         w = MarkType.objects.all()
+#         return Response({'MarkTypes': MarkTypeSerializer(w, many=True).data})
+#
+#     def post(self, request):
+#
+#         serializer = MarkTypeSerializer(data=request.data)
+#         serializer.is_valid(raise_exception=True)
+#         serializer.save()
+#
+#         return Response({'MarkTypes': serializer.data})
+#
+#     def put(self, request, *args, **kwargs):
+#         pk = kwargs.get("pk", None)
+#         try:
+#             instance = MarkType.objects.get(pk=pk)
+#         except MarkType.DoesNotExist:
+#             return Response({"error": "MarkType does not exist"}, status=status.HTTP_404_NOT_FOUND)
+#
+#         serializer = MarkTypeSerializer(instance, data=request.data)
+#         serializer.is_valid(raise_exception=True)
+#         serializer.save()
+#         return Response(serializer.data)
+#
+#     def delete(self, request, pk):
+#         subject = MarkType.objects.get(pk=pk)
+#         subject.delete()
+#         return Response({'message': 'MarkType has been deleted.'})
 
 
-class MarksAPIView(APIView):
-    def get(self, request):
-        w = Marks.objects.all()
-        return Response({'Marks': ClassSerializer(w, many=True).data})
+# class StudentAPIView(APIView):
+#     def get(self, request):
+#         w = StudentData.objects.all()
+#         return Response({'Students': TermsSerializer(w, many=True).data})
+#
+#     def post(self, request):
+#
+#         serializer = StudentSerializer(data=request.data)
+#         serializer.is_valid(raise_exception=True)
+#         serializer.save()
+#
+#         return Response({'Students': serializer.data})
+#
+#     def put(self, request, *args, **kwargs):
+#         pk = kwargs.get("pk", None)
+#         try:
+#             instance = StudentData.objects.get(pk=pk)
+#         except StudentData.DoesNotExist:
+#             return Response({"error": "Student does not exist"}, status=status.HTTP_404_NOT_FOUND)
+#
+#         serializer = StudentSerializer(instance, data=request.data)
+#         serializer.is_valid(raise_exception=True)
+#         serializer.save()
+#         return Response(serializer.data)
+#
+#     def delete(self, request, pk):
+#         subject = StudentData.objects.get(pk=pk)
+#         subject.delete()
+#         return Response({'message': 'Student has been deleted.'})
 
-    def post(self, request):
 
-        serializer = MarksSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
+# class TeacherAPIView(APIView):
+#     def get(self, request):
+#         w = TeacherData.objects.all()
+#         return Response({'Teachers': TeacherSerializer(w, many=True).data})
+#
+#     def post(self, request):
+#
+#         serializer = TeacherSerializer(data=request.data)
+#         serializer.is_valid(raise_exception=True)
+#         serializer.save()
+#
+#         return Response({'Teachers': serializer.data})
+#
+#     def put(self, request, *args, **kwargs):
+#         pk = kwargs.get("pk", None)
+#         try:
+#             instance = TeacherData.objects.get(pk=pk)
+#         except TeacherData.DoesNotExist:
+#             return Response({"error": "Teacher does not exist"}, status=status.HTTP_404_NOT_FOUND)
+#
+#         serializer = TeacherSerializer(instance, data=request.data)
+#         serializer.is_valid(raise_exception=True)
+#         serializer.save()
+#         return Response(serializer.data)
+#
+#     def delete(self, request, pk):
+#         subject = TeacherData.objects.get(pk=pk)
+#         subject.delete()
+#         return Response({'message': 'Teacher has been deleted.'})
 
-        return Response({'Marks': serializer.data})
 
-    def put(self, request, *args, **kwargs):
-        pk = kwargs.get("pk", None)
-        try:
-            instance = Marks.objects.get(pk=pk)
-        except Marks.DoesNotExist:
-            return Response({"error": "Mark does not exist"}, status=status.HTTP_404_NOT_FOUND)
+# class ClassAPIView(APIView):
+#     def get(self, request):
+#         w = Class.objects.all()
+#         return Response({'Classes': ClassSerializer(w, many=True).data})
+#
+#     def post(self, request):
+#
+#         serializer = ClassSerializer(data=request.data)
+#         serializer.is_valid(raise_exception=True)
+#         serializer.save()
+#
+#         return Response({'Classes': serializer.data})
+#
+#     def put(self, request, *args, **kwargs):
+#         pk = kwargs.get("pk", None)
+#         try:
+#             instance = Class.objects.get(pk=pk)
+#         except Class.DoesNotExist:
+#             return Response({"error": "Class does not exist"}, status=status.HTTP_404_NOT_FOUND)
+#
+#         serializer = ClassSerializer(instance, data=request.data)
+#         serializer.is_valid(raise_exception=True)
+#         serializer.save()
+#         return Response(serializer.data)
+#
+#     def delete(self, request, pk):
+#         subject = Class.objects.get(pk=pk)
+#         subject.delete()
+#         return Response({'message': 'Class has been deleted.'})
 
-        serializer = MarkSerializer(instance, data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(serializer.data)
 
-    def delete(self, request, pk):
-        subject = Mark.objects.get(pk=pk)
-        subject.delete()
-        return Response({'message': 'Mark has been deleted.'})
+# class MarksAPIView(APIView):
+#     def get(self, request):
+#         w = Marks.objects.all()
+#         return Response({'Marks': ClassSerializer(w, many=True).data})
+#
+#     def post(self, request):
+#
+#         serializer = MarksSerializer(data=request.data)
+#         serializer.is_valid(raise_exception=True)
+#         serializer.save()
+#
+#         return Response({'Marks': serializer.data})
+#
+#     def put(self, request, *args, **kwargs):
+#         pk = kwargs.get("pk", None)
+#         try:
+#             instance = Marks.objects.get(pk=pk)
+#         except Marks.DoesNotExist:
+#             return Response({"error": "Mark does not exist"}, status=status.HTTP_404_NOT_FOUND)
+#
+#         serializer = MarkSerializer(instance, data=request.data)
+#         serializer.is_valid(raise_exception=True)
+#         serializer.save()
+#         return Response(serializer.data)
+#
+#     def delete(self, request, pk):
+#         subject = Mark.objects.get(pk=pk)
+#         subject.delete()
+#         return Response({'message': 'Mark has been deleted.'})
 
 #class SubjectsAPIView(generics.ListAPIView):
 #    queryset = Subjects.objects.all()
