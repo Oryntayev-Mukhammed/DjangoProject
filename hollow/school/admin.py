@@ -20,7 +20,7 @@ class MarkTypeAdmin(admin.ModelAdmin):
 
 
 class SubjectsAdmin(admin.ModelAdmin):
-    list_display = ['id', 'SubjectName', 'Text', 'Duration', 'TermId', 'time_create', 'time_update']
+    list_display = ['id', 'SubjectName', 'Price', 'Text', 'Duration', 'TermId', 'time_create', 'time_update']
     list_display_links = ['id', 'SubjectName']
     search_fields = ['SubjectName']
     list_filter = ['TermId']
@@ -54,10 +54,10 @@ class TeacherDataAdmin(admin.ModelAdmin):
 
 
 class ClassAdmin(admin.ModelAdmin):
-    list_display = ['id', 'ClassName', 'StdId', 'SubjectId', 'time_create', 'time_update']
+    list_display = ['id', 'ClassName', 'StdId', 'TeacherId', 'SubjectId', 'time_create', 'time_update']
     list_display_links = ['id', 'ClassName']
     search_fields = ['ClassName']
-    list_filter = ['SubjectId']
+    list_filter = ['SubjectId', 'TeacherId']
     prepopulated_fields = {"slug": ("ClassName",)}
     readonly_fields = ('time_create', 'time_update')
 
