@@ -3,6 +3,7 @@ import io
 from rest_framework import serializers
 from rest_framework.parsers import JSONParser
 from rest_framework.renderers import JSONRenderer
+from phonenumber_field.validators import validate_international_phonenumber
 
 from .models import *
 
@@ -73,16 +74,25 @@ class StudentSerializer(serializers.Serializer):
     StdName = serializers.CharField(max_length=255)
     StdScndName = serializers.CharField(max_length=255)
     StdThrdName = serializers.CharField(max_length=255)
+    UserId = serializers.PrimaryKeyRelatedField(queryset=User.objects.values_list('id', flat=True))
     StdDOB = serializers.DateTimeField()
+    PhoneNumber = serializers.CharField(validators=[validate_international_phonenumber])
     StdJoinDate = serializers.DateTimeField()
     StdAddress = serializers.CharField(max_length=255)
+    photo = serializers.ImageField(max_length=None, use_url=True, required=False)
+    discript = serializers.CharField(max_length=255)
     time_create = serializers.DateTimeField(read_only=True)
     time_update = serializers.DateTimeField(read_only=True)
 
     def create(self, validated_data):
-        return StudentData.objects.create(**validated_data)
+        user_id = validated_data.pop('UserId')
+        user = User.objects.get(id=user_id)
+        return StudentData.objects.create(UserId=user, **validated_data)
 
     def update(self, instance, validate_data):
+        user_id = validate_data.pop('UserId')
+        user = User.objects.get(id=user_id)
+        instance.UserId = user
         for attr, value in validate_data.items():
             setattr(instance, attr, value)
         instance.save()
@@ -91,6 +101,7 @@ class StudentSerializer(serializers.Serializer):
 
 class TeacherSerializer(serializers.Serializer):
     TName = serializers.CharField(max_length=255)
+    UserId = serializers.PrimaryKeyRelatedField(queryset=User.objects.values_list('id', flat=True))
     TScndName = serializers.CharField(max_length=255)
     TThrdName = serializers.CharField(max_length=255)
     TDOB = serializers.DateTimeField()
@@ -100,9 +111,14 @@ class TeacherSerializer(serializers.Serializer):
     time_update = serializers.DateTimeField(read_only=True)
 
     def create(self, validated_data):
-        return TeacherData.objects.create(**validated_data)
+        user_id = validated_data.pop('UserId')
+        user = User.objects.get(id=user_id)
+        return TeacherData.objects.create(UserId=user, **validated_data)
 
     def update(self, instance, validate_data):
+        user_id = validate_data.pop('UserId')
+        user = User.objects.get(id=user_id)
+        instance.UserId = user
         for attr, value in validate_data.items():
             setattr(instance, attr, value)
         instance.save()

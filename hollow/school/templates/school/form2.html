@@ -36,6 +36,13 @@
             <div class="col-12 login-btm login-button justify-content-center d-flex">
               <button type="submit" class="btn btn-outline-primary">Confirm</button>
             </div>
+            {% if form.non_field_errors %}
+              <div class="alert alert-danger" role="alert">
+                {% for error in form.non_field_errors %}
+                  {{ error }}
+                {% endfor %}
+              </div>
+            {% endif %}
           </form>
           </div>
         </div>

@@ -80,6 +80,18 @@ class HomeView(DataMixin, ListView):
         return dict(list(context.items()) + list(c_def.items()))
 
 
+class ProfileView(DataMixin, ListView):
+    model = Subjects
+    template_name = 'school/profile.html'
+    context_object_name = 'profile'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['student'] = get_student(self.request.user.id)
+        context['sertificates'] = get_sertificate(self.request.user.id)
+        return dict(list(context.items()))
+
+
 def Details(request):
     return render(request, 'school/details.html')
 

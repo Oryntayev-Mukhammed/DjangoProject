@@ -36,3 +36,13 @@ def get_last_three_course():
 @register.simple_tag()
 def get_last_course():
     return Subjects.objects.last()
+
+
+@register.simple_tag()
+def get_student(Number):
+    return StudentData.objects.get(UserId=Number)
+
+
+@register.simple_tag()
+def get_sertificate(Number):
+    return ApplyCourse.objects.filter(UserId=Number)
