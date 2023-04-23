@@ -38,6 +38,7 @@ class Subjects(models.Model):
     Text = models.TextField(verbose_name='Описание занятия')
     Duration = models.IntegerField(verbose_name='Время обучения в неделях')
     TermId = models.ForeignKey(Terms, on_delete=models.CASCADE, verbose_name='К какому семестру')
+    Price = models.IntegerField(verbose_name='Цена')
     time_create = models.DateTimeField(auto_now_add=True, null=True, verbose_name="Время создания")
     time_update = models.DateTimeField(auto_now=True, null=True, verbose_name="Время изменения")
 
@@ -82,7 +83,7 @@ class TeacherData(models.Model):
     time_update = models.DateTimeField(auto_now=True, null=True, verbose_name="Время изменения")
 
     def __str__(self):
-        return self.Tname
+        return self.TName
 
     class Meta:
         verbose_name = 'Учитель'
@@ -95,6 +96,7 @@ class Class(models.Model):
     ClassName = models.CharField(max_length=255, verbose_name='Название группы')
     StdId = models.ForeignKey(StudentData, on_delete=models.CASCADE, verbose_name='Студент')
     SubjectId = models.ForeignKey(Subjects, on_delete=models.CASCADE, verbose_name='Занятие')
+    TeacherId = models.ForeignKey(TeacherData, on_delete=models.CASCADE, verbose_name='Учитель')
     time_create = models.DateTimeField(auto_now_add=True, null=True, verbose_name="Время создания")
     time_update = models.DateTimeField(auto_now=True, null=True, verbose_name="Время изменения")
 

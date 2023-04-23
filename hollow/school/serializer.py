@@ -47,6 +47,7 @@ class MarkTypeSerializer(serializers.Serializer):
 
 class SubjectsSerializer(serializers.Serializer):
     SubjectName = serializers.CharField(max_length=255)
+    Price = serializers.IntegerField()
     Text = serializers.CharField()
     Duration = serializers.IntegerField()
     TermId = serializers.PrimaryKeyRelatedField(queryset=Terms.objects.values_list('id', flat=True))
@@ -112,15 +113,18 @@ class ClassSerializer(serializers.Serializer):
     ClassName = serializers.CharField(max_length=255)
     StdId = serializers.PrimaryKeyRelatedField(queryset=StudentData.objects.values_list('id', flat=True))
     SubjectId = serializers.PrimaryKeyRelatedField(queryset=Subjects.objects.values_list('id', flat=True))
+    TeacherId = serializers.PrimaryKeyRelatedField(queryset=TeacherData.objects.values_list('id', flat=True))
     time_create = serializers.DateTimeField(read_only=True)
     time_update = serializers.DateTimeField(read_only=True)
 
     def create(self, validated_data):
         std_id = validated_data.pop('StdId')
         subject_id = validated_data.pop('SubjectId')
+        teacher_id = validated_data.pop('TeacherId')
         term1 = StudentData.objects.get(id=std_id)
         term2 = Subjects.objects.get(id=subject_id)
-        return Class.objects.create(StdId=term1, SubjectId=term2, **validated_data)
+        term3 = TeacherData.objects.get(id=teacher_id)
+        return Class.objects.create(StdId=term1, SubjectId=term2, TeacherId=term3, **validated_data)
 
     def update(self, instance, validate_data):
         std_id = validate_data.pop('StdId')

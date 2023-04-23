@@ -13,7 +13,7 @@ from rest_framework.views import APIView
 
 from .forms import *
 from .models import *
-from django.views.generic import ListView, CreateView, FormView
+from django.views.generic import ListView, CreateView, FormView, DetailView
 
 from .serializer import SubjectsSerializer, MarkTypeSerializer, TermsSerializer, StudentSerializer, TeacherSerializer, \
     ClassSerializer, MarksSerializer
@@ -54,6 +54,17 @@ class CourseList(DataMixin, ListView):
         context = super().get_context_data(**kwargs)
         c_def = self.get_user_context(title="Курсы")
         return dict(list(context.items()) + list(c_def.items()))
+
+
+class CourseDetail(DetailView):
+    model = Subjects
+    template_name = 'school/details.html'
+    slug_url_kwarg = 'post_slug'
+    context_object_name = 'course'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
 
 
 class HomeView(DataMixin, ListView):
