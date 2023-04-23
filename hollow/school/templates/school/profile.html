@@ -60,10 +60,10 @@ body{background:url(https://bootstraptema.ru/images/bg/bg-1.png)}
  </div>
  <div class="panel-body">
  <div class="text-center" id="author">
- <img src="https://bootstraptema.ru/snippets/element/2016/profilesection/myprofile.jpg">
- <h3>Василий Понторезов</h3>
- <small class="label label-warning">Российская Федерация</small>
- <p>Я простой Русский пацан и мне всё по барабану.</p>
+ <img src="{{student.photo.url}}" width="65%">
+ <h3>{{student.StdName}} {{student.StdScndName}} {{student.StdThrdName}}</h3>
+ <small class="label label-warning">Student</small>
+ <p>{{student.discript}}</p>
  <p class="sosmed-author">
  <a href="#"><i class="fa fa-facebook" title="Facebook"></i></a>
  <a href="#"><i class="fa fa-twitter" title="Twitter"></i></a>
@@ -88,14 +88,14 @@ body{background:url(https://bootstraptema.ru/images/bg/bg-1.png)}
  <h4>Основная информация</h4>
  <table class="table table-th-block">
  <tbody>
- <tr><td class="active">Login:</td><td>Nagibator 1337</td></tr>
- <tr><td class="active">ФИО:</td><td>Василий Понторезов</td></tr>
- <tr><td class="active">Факультет:</td><td>Front-end разработчик</td></tr>
- <tr><td class="active">Страна:</td><td>Россия</td></tr>
- <tr><td class="active">Город:</td><td>Волгоград</td></tr>
- <tr><td class="active">Телефон:</td><td>8-888-888-88-88</td></tr>
- <tr><td class="active">Дата рождения:</td><td>07.07.7777</td></tr>
- <tr><td class="active">Email:</td><td>pontorezov@mail.ru</td></tr>
+ <tr><td class="active">Login:</td><td>{{user.username}}</td></tr>
+ <tr><td class="active">ФИО:</td><td>{{student.StdName}}, {{student.StdScndName}}, {{student.StdThrdName}}</td></tr>
+ <tr><td class="active">Место жительства:</td><td>{{student.StdAddress}}</td></tr>
+ <tr><td class="active">Телефон:</td><td>{{student.PhoneNumber}}</td></tr>
+ <tr><td class="active">Дата рождения:</td><td>{{student.StdDOB}}</td></tr>
+ <tr><td class="active">Дата зачисления:</td><td>{{student.StdJoinDate}}</td></tr>
+ <tr><td class="active">Email:</td><td>{{user.email}}</td></tr>
+ <tr><td class="active">Обучение:</td><td>Онлайн</td></tr>
 </tbody>
  </table>
  </div>
@@ -109,29 +109,21 @@ body{background:url(https://bootstraptema.ru/images/bg/bg-1.png)}
  <tr>
   <th style="text-align: center;">№</th>
   <th style="text-align: center;">Название курса</th>
-  <th style="text-align: center;">Дата заказа</th>
+  <th style="text-align: center;">Не завершено</th>
+  <th style="text-align: center;">Зачисление</th>
   <th style="text-align: center;">Стоимость</th>
  </tr>
  </thead>
  <tbody>
+ {% for i in sertificates %}
  <tr>
-  <td>1</td>
-  <td>Курс по HTML и CSS</td>
-  <td>01.01.2023</td>
+  <td>{{ forloop.counter}}</td>
+  <td>{{i.SubjectId}}</td>
+  <td>{{i.is_valid}}</td>
+  <td>{{i.time_create}}</td>
   <td>5000 руб.</td>
  </tr>
- <tr>
-  <td>2</td>
-  <td>Курс по JavaScript</td>
-  <td>15.01.2023</td>
-  <td>10000 руб.</td>
- </tr>
- <tr>
-  <td>3</td>
-  <td>Курс по PHP и MySQL</td>
-  <td>01.02.2023</td>
-  <td>8000 руб.</td>
- </tr>
+ {% endfor %}
  </tbody>
 </table>
 </div>
