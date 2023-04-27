@@ -188,7 +188,31 @@ class MarksSerializer(serializers.Serializer):
         instance.save()
         return instance
 
+class ApplyCourseSerializer(serializers.Serializer):
+    UserId = serializers.PrimaryKeyRelatedField(queryset=User.objects.values_list('id', flat=True))
+    SubjectId = serializers.PrimaryKeyRelatedField(queryset=Subjects.objects.values_list('id', flat=True))
+    is_valid = serializers.BooleanField()
+    time_create = serializers.DateTimeField(read_only=True)
+    time_update = serializers.DateTimeField(read_only=True)
 
+    def create(self, validated_data):
+        user_id = validated_data.pop('UserId')
+        subject_id = validated_data.pop('SubjectId')
+        term1 = User.objects.get(id=user_id)
+        term2 = Subjects.objects.get(id=subject_id)
+        return ApplyCourse.objects.create(StdId=term1, SubjectId=term2, **validated_data)
+
+    def update(self, instance, validate_data):
+        user_id = validate_data.pop('UserId')
+        subject_id = validate_data.pop('SubjectId')
+        term1 = User.objects.get(id=user_id)
+        term2 = Subjects.objects.get(id=subject_id)
+        instance.UserId = term1
+        instance.SubjectId = term2
+        for attr, value in validate_data.items():
+            setattr(instance, attr, value)
+        instance.save()
+        return instance
 
 # def encode():
 #     model = SubjectModel('SubjectName: Ruby', 'Text: hjd', 4, 2)
