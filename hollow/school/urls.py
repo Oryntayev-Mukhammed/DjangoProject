@@ -1,5 +1,7 @@
 from django.urls import path, re_path, include
 from django.views.decorators.cache import cache_page
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView, TokenVerifyView
+
 from .views import *
 from rest_framework import routers
 
@@ -54,6 +56,12 @@ urlpatterns = [
     path('api/v1/mark/', MarkAPIList.as_view()),
     path('api/v1/mark/<int:pk>/', MarkAPIUpdate.as_view()),
     path('api/v1/markdelete/<int:pk>/', MarkAPIDestroy.as_view()),
+    path('api/v1/drf-auth/', include('rest_framework.urls')),
+    path('api/v1/auth/', include('djoser.urls')),
+    re_path(r'^auth/', include('djoser.urls.authtoken')),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
     # path('api/v1/subjectlist/', SubjectViewSet.as_view({'get': 'list'})),
     # path('api/v1/subjectlist/<int:pk>/', SubjectViewSet.as_view({'###': '###'})),
     # path('api/v1/marktypelist/', MarkTypeAPIView.as_view()),
