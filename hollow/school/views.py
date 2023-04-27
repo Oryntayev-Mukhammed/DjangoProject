@@ -20,7 +20,7 @@ from django.views.generic import ListView, CreateView, FormView, DetailView
 
 from .permissions import IsAdminOrReadOnly
 from .serializer import SubjectsSerializer, MarkTypeSerializer, TermsSerializer, StudentSerializer, TeacherSerializer, \
-    ClassSerializer, MarksSerializer
+    ClassSerializer, MarksSerializer, ApplyCourseSerializer
 from .utils import *
 from .templatetags.school_tags import *
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -60,10 +60,7 @@ class CourseList(DataMixin, ListView):
         return dict(list(context.items()) + list(c_def.items()))
 
 
-class CourseDetail(DetailView, PageNumberPagination):
-    page_size = 6
-    page_query_param = 'page_size'
-    max_page_size = 10
+class CourseDetail(DetailView):
     model = Subjects
     template_name = 'school/details.html'
     slug_url_kwarg = 'post_slug'
@@ -155,10 +152,15 @@ class ContactFormView(DataMixin, FormView):
         print(form.cleaned_data)
         return redirect('home')
 
+class SubjectApiListPagination(PageNumberPagination):
+    page_size = 6
+    page_query_param = 'page_size'
+    max_page_size = 10
 
 class SubjectAPIList(generics.ListCreateAPIView):
     queryset = Subjects.objects.all()
     serializer_class = SubjectsSerializer
+    pagination_class = SubjectApiListPagination
 class SubjectAPIUpdate(generics.RetrieveUpdateAPIView):
     queryset = Subjects.objects.all()
     serializer_class = SubjectsSerializer
@@ -233,7 +235,7 @@ class MarkAPIList(generics.ListCreateAPIView):
     serializer_class = MarksSerializer
 class MarkAPIUpdate(generics.ListCreateAPIView):
     queryset = Marks.objects.all()
-    serializer_class = ClassSerializer
+    serializer_class = MarksSerializer
     permission_classes = (IsAdminOrReadOnly,)
 class MarkAPIDestroy(generics.ListCreateAPIView):
     queryset = Marks.objects.all()
@@ -244,6 +246,23 @@ class MarkViewSet(viewsets.ModelViewSet):
     queryset = Marks.objects.all()
     serializer_class = MarksSerializer
 
+class ApplyCoursePagination(PageNumberPagination):
+    page_size = 6
+    page_query_param = 'page_size'
+    max_page_size = 10
+
+class ApplyCourseAPIList(generics.ListCreateAPIView):
+    queryset = ApplyCourse.objects.all()
+    serializer_class = ApplyCourseSerializer
+    pagination_class = ApplyCoursePagination
+class ApplyCourseAPIUpdate(generics.ListCreateAPIView):
+    queryset = ApplyCourse.objects.all()
+    serializer_class = ApplyCourseSerializer
+    permission_classes = (IsAdminOrReadOnly,)
+class ApplyCourseAPIDestroy(generics.ListCreateAPIView):
+    queryset = ApplyCourse.objects.all()
+    serializer_class = ApplyCourseSerializer
+    permission_classes = (IsAdminOrReadOnly,)
 
 def about(request):
     return render(request, 'school/about.html')
