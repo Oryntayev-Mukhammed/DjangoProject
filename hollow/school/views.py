@@ -1,4 +1,5 @@
 from django.contrib.auth import logout, login
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.views import LoginView
 from django.forms import model_to_dict
@@ -8,9 +9,10 @@ from django.http import Http404
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from rest_framework import generics, status, viewsets
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAdminUser
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAdminUser, IsAuthenticated
 
 from .forms import *
 from .models import *
@@ -58,7 +60,10 @@ class CourseList(DataMixin, ListView):
         return dict(list(context.items()) + list(c_def.items()))
 
 
-class CourseDetail(DetailView):
+class CourseDetail(DetailView, PageNumberPagination):
+    page_size = 6
+    page_query_param = 'page_size'
+    max_page_size = 10
     model = Subjects
     template_name = 'school/details.html'
     slug_url_kwarg = 'post_slug'
@@ -88,11 +93,15 @@ class ProfileView(DataMixin, ListView):
     context_object_name = 'profile'
 
     def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['student'] = get_student(self.request.user.id)
-        context['sertificates'] = get_sertificate(self.request.user.id)
-        return dict(list(context.items()))
-
+        if self.request.user.is_authenticated:
+            context = super().get_context_data(**kwargs)
+            context['student'] = get_student(self.request.user.id)
+            context['sertificates'] = get_sertificate(self.request.user.id)
+            return dict(list(context.items()))
+        else:
+            self.template_name = 'school/about.html'
+            context = super().get_context_data(**kwargs)
+            return dict(list(context.items()))
 
 def Details(request):
     return render(request, 'school/details.html')
