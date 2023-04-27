@@ -5,18 +5,16 @@ from rest_framework import routers
 
 # routerSubject = routers.SimpleRouter()
 # routerSubject.register(r'subject', SubjectViewSet)
-routerTerm = routers.SimpleRouter()
-routerTerm.register(r'term', TermViewSet)
-routerMarkType = routers.SimpleRouter()
-routerMarkType.register(r'marktype', MarkTypeViewSet)
-routerStudent = routers.SimpleRouter()
-routerStudent.register(r'student', StudentViewSet)
-routerTeacher = routers.SimpleRouter()
-routerTeacher.register(r'teacher', TeacherViewSet)
-routerClass = routers.SimpleRouter()
-routerClass.register(r'class', ClassViewSet)
-routerMark = routers.SimpleRouter()
-routerMark.register(r'mark', MarkViewSet)
+# routerTerm = routers.SimpleRouter()
+# routerTerm.register(r'term', TermViewSet)
+# routerMarkType = routers.SimpleRouter()
+# routerMarkType.register(r'marktype', MarkTypeViewSet)
+# routerStudent = routers.SimpleRouter()
+# routerStudent.register(r'student', StudentViewSet)
+# routerTeacher = routers.SimpleRouter()
+# routerTeacher.register(r'teacher', TeacherViewSet)
+# routerMark = routers.SimpleRouter()
+# routerMark.register(r'mark', MarkViewSet)
 
 urlpatterns = [
     path('login/', LoginUser.as_view(), name='singIn'),
@@ -36,14 +34,26 @@ urlpatterns = [
     path('nonauthorized/', nonAuthorized_user, name='nonauthorized'),
     path('fullautho/', fullAuthorized_user, name='fullauthorized_user'),
     path('api/v1/subject/', SubjectAPIList.as_view()),
-    path('api/v1/subject/<int:pk>', SubjectAPIUpdate.as_view()),
+    path('api/v1/subject/<int:pk>/', SubjectAPIUpdate.as_view()),
     path('api/v1/subjectdelete/<int:pk>/', SubjectAPIDestroy.as_view()),
-    path('api/v1/', include(routerTerm.urls)),
-    path('api/v1/', include(routerMarkType.urls)),
-    path('api/v1/', include(routerStudent.urls)),
-    path('api/v1/', include(routerTeacher.urls)),
-    path('api/v1/', include(routerClass.urls)),
-    path('api/v1/', include(routerMark.urls)),
+    path('api/v1/term/', TermAPIList.as_view()),
+    path('api/v1/term/<int:pk>/', TermAPIUpdate.as_view()),
+    path('api/v1/termdelete/<int:pk>/', TermAPIDestroy.as_view()),
+    path('api/v1/marktype/', MarkTypeAPIList.as_view()),
+    path('api/v1/marktype/<int:pk>/', MarkTypeAPIUpdate.as_view()),
+    path('api/v1/marktypedelete/<int:pk>/', MarkTypeAPIDestroy.as_view()),
+    path('api/v1/student/', StudentAPIList.as_view()),
+    path('api/v1/student/<int:pk>/', StudentAPIUpdate.as_view()),
+    path('api/v1/studentdelete/<int:pk>/', StudentAPIDestroy.as_view()),
+    path('api/v1/teacher/', TeacherAPIList.as_view()),
+    path('api/v1/teacher/<int:pk>/', TeacherAPIUpdate.as_view()),
+    path('api/v1/teacherdelete/<int:pk>/', TeacherAPIDestroy.as_view()),
+    path('api/v1/class/', ClassAPIList.as_view()),
+    path('api/v1/class/<int:pk>/', ClassAPIUpdate.as_view()),
+    path('api/v1/classdelete/<int:pk>/', ClassAPIDestroy.as_view()),
+    path('api/v1/mark/', MarkAPIList.as_view()),
+    path('api/v1/mark/<int:pk>/', MarkAPIUpdate.as_view()),
+    path('api/v1/markdelete/<int:pk>/', MarkAPIDestroy.as_view()),
     # path('api/v1/subjectlist/', SubjectViewSet.as_view({'get': 'list'})),
     # path('api/v1/subjectlist/<int:pk>/', SubjectViewSet.as_view({'###': '###'})),
     # path('api/v1/marktypelist/', MarkTypeAPIView.as_view()),

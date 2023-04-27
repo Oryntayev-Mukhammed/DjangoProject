@@ -150,46 +150,86 @@ class ContactFormView(DataMixin, FormView):
 class SubjectAPIList(generics.ListCreateAPIView):
     queryset = Subjects.objects.all()
     serializer_class = SubjectsSerializer
-
-
 class SubjectAPIUpdate(generics.RetrieveUpdateAPIView):
     queryset = Subjects.objects.all()
     serializer_class = SubjectsSerializer
     permission_classes = (IsAdminOrReadOnly, )
-
-
 class SubjectAPIDestroy(generics.RetrieveDestroyAPIView):
     queryset = Subjects.objects.all()
     serializer_class = SubjectsSerializer
     permission_classes = (IsAdminOrReadOnly, )
 
-
-
-
-class TermViewSet(viewsets.ModelViewSet):
+class TermAPIList(generics.ListCreateAPIView):
     queryset = Terms.objects.all()
     serializer_class = TermsSerializer
+class TermAPIUpdate(generics.ListCreateAPIView):
+    queryset = Terms.objects.all()
+    serializer_class = TermsSerializer
+    permission_classes = (IsAdminOrReadOnly,)
+class TermAPIDestroy(generics.ListCreateAPIView):
+    queryset = Terms.objects.all()
+    serializer_class = TermsSerializer
+    permission_classes = (IsAdminOrReadOnly,)
 
-
-class MarkTypeViewSet(viewsets.ModelViewSet):
+class MarkTypeAPIList(generics.ListCreateAPIView):
     queryset = MarkType.objects.all()
     serializer_class = MarkTypeSerializer
+class MarkTypeAPIUpdate(generics.ListCreateAPIView):
+    queryset = MarkType.objects.all()
+    serializer_class = MarkTypeSerializer
+    permission_classes = (IsAdminOrReadOnly,)
+class MarkTypeAPIDestroy(generics.ListCreateAPIView):
+    queryset = MarkType.objects.all()
+    serializer_class = MarkTypeSerializer
+    permission_classes = (IsAdminOrReadOnly,)
 
-
-class StudentViewSet(viewsets.ModelViewSet):
+class StudentAPIList(generics.ListCreateAPIView):
     queryset = StudentData.objects.all()
     serializer_class = StudentSerializer
+class StudentAPIUpdate(generics.ListCreateAPIView):
+    queryset = StudentData.objects.all()
+    serializer_class = StudentSerializer
+    permission_classes = (IsAdminOrReadOnly,)
+class StudentAPIDestroy(generics.ListCreateAPIView):
+    queryset = StudentData.objects.all()
+    serializer_class = StudentSerializer
+    permission_classes = (IsAdminOrReadOnly,)
 
-
-class TeacherViewSet(viewsets.ModelViewSet):
+class TeacherAPIList(generics.ListCreateAPIView):
     queryset = TeacherData.objects.all()
     serializer_class = TeacherSerializer
+class TeacherAPIUpdate(generics.ListCreateAPIView):
+    queryset = TeacherData.objects.all()
+    serializer_class = TeacherSerializer
+    permission_classes = (IsAdminOrReadOnly,)
+class TeacherAPIDestroy(generics.ListCreateAPIView):
+    queryset = TeacherData.objects.all()
+    serializer_class = TeacherSerializer
+    permission_classes = (IsAdminOrReadOnly,)
 
-
-class ClassViewSet(viewsets.ModelViewSet):
+class ClassAPIList(generics.ListCreateAPIView):
     queryset = Class.objects.all()
     serializer_class = ClassSerializer
+class ClassAPIUpdate(generics.ListCreateAPIView):
+    queryset = Class.objects.all()
+    serializer_class = ClassSerializer
+    permission_classes = (IsAdminOrReadOnly,)
+class ClassAPIDestroy(generics.ListCreateAPIView):
+    queryset = Class.objects.all()
+    serializer_class = ClassSerializer
+    permission_classes = (IsAdminOrReadOnly,)
 
+class MarkAPIList(generics.ListCreateAPIView):
+    queryset = Marks.objects.all()
+    serializer_class = MarksSerializer
+class MarkAPIUpdate(generics.ListCreateAPIView):
+    queryset = Marks.objects.all()
+    serializer_class = ClassSerializer
+    permission_classes = (IsAdminOrReadOnly,)
+class MarkAPIDestroy(generics.ListCreateAPIView):
+    queryset = Marks.objects.all()
+    serializer_class = MarksSerializer
+    permission_classes = (IsAdminOrReadOnly,)
 
 class MarkViewSet(viewsets.ModelViewSet):
     queryset = Marks.objects.all()
